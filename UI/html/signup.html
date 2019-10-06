@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>signup-page</title>
+    <link rel="stylesheet" href="../css/createAccount.css">
+</head>
+<body>
+    <div class="general-background">       
+        <div class="navbar">
+            <div>
+                    <a href="../html/index.html">
+                <img class="logo-image" src="../images/logo.png" >
+                    </a>
+            </div>
+            <div class="login-navbar">
+                    <a href="../html/login.html">
+                <button id="login-btn">LOG IN</button>
+                    </a>
+            </div>
+        </div>
+        <div class="signup-navbar">
+            <button id="signup-btn">SIGN UP</button>
+        </div>
+    
+    <div class="form">
+            <p class="form-header">Create a new account.</p>
+        <form id="signup-form" class="form__signup">
+            <div class="form-control">
+                <input type="text" id="reg-fullname" class="form-input" placeholder="Full Name" required>
+            </div>
+    
+            <div class="form-control">
+                <input type="email" id="reg-email" class="form-input" placeholder="Email Address" required>
+            </div>
+    
+            <div class="form-control">
+                <input type="password" id="reg-password" class="form-input" placeholder="Password" required>
+            </div>
+    
+            <div class="form-control">
+                <input type="password" id="reg-confirm-password" class="form-input" placeholder="Confirm Password"
+                    required>
+            </div>
+    
+            <div class="form-control">
+                <button type="submit" class="btn btn__primary is__fullwd">Sign Up</button>
+            </div>
+            <span>Already have an account?
+                <a href="./login.html">Sign In</a>
+            </span>
+        </form>
+    </div>   
+    </div>
+        <footer class="footer">
+            <div class="footer-bottom">&copy; 2019| made by FistonHn</div>
+        </footer>
+</body>
+</html>
