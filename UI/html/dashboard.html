@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="general-background">  
+        <div class="navbar">     
+            <div class="nav-container">
+                <div class="img">
+                    <a href="../html/index.html"> <img id="logo-image" src="../images/logo.png" ></a>  
+                </div>
+                <div class= 'btn-container'>
+                    <div class="menu"> 
+                        <a href="profile.html"><button id="profile-btn" >Profile</button></a>           
+                    </div>
+                    <div class="menu">    
+                        <a href="../html/login.html"><button id="logout">Logout</button></a>  
+                    </div>
+                </div>
+            </div>
+        </div>            
+        <form class="newstory-form">
+            <div>
+                <input class="diary__title" type="text" placeholder="Title">
+            </div>
+            <div>
+                <textarea class="diary__content" cols="30" rows="10" placeholder="Pen down your feeling?"></textarea>
+            </div>                  
+            <button id="diary-btn" type="submit">Save Diary</button>                   
+        </form>
+        
+        <ul class="card" >                 
+            <li class="container">
+                <div class="title-diary">How should I feel?</div>
+                    <div class="content-diary">
+                        <p class="Econtent">
+                            I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months finally seems to be on the same page as me and work is somewhat good too. So I guess I am writing this just to clear my head on something, if you want to give your opinion I will gladly accept it.
+
+                            Well, I have been seeing Diego for almost 7 months now, he has not asked me to be his girlfriend but should I really worry or is that a normal thing in today’s society? I have not had a somewhat relationship in a long time so I guess I forgot how those works. Also he talks about his ex a lot, if you are a guy who just got out of a super important relationship around 10 months ago, would you still be talking about your ex that much or is there something else I should worry about? Even sometimes, I feel like her shadow, like everything he and I do, he did it with her before.
+                            
+                            I guess today’s entry is a short one; it is my first one so it is kind of like ripping off a Band-Aid. Tomorrow is my 22nd birthday! I will try to write how it goes.
+
+                            <h3>NOTE: this is a public entry you can delete it if you want! and feel free to write your own entry</h3>
+                        </p>
+                    <div class="btn">
+                    <span class="read-btn">EDIT STORY</span>
+                    <span class="delete-btn">DELETE STORY<span>
+                    </div>
+                </div>
+            </li>                 
+        </ul>        
+    </div>
+    <script src="../javascript/app.js"></script> 
+</body>
+</html>
