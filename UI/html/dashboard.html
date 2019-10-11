@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/DashBoard.css">
 </head>
 <body>
     <div class="general-background">  
@@ -15,21 +15,28 @@
                     <a href="../html/index.html"> <img id="logo-image" src="../images/logo.png" ></a>  
                 </div>
                 <div class= 'btn-container'>
+                    <div class="menu">    
+                      <button class="add-entry" id="logout">Add entry</button > 
+                    </div>
                     <div class="menu"> 
-                        <a href="profile.html"><button id="profile-btn" >Profile</button></a>           
+                        <button id="myEntries-btn" >My entries</button>          
                     </div>
                     <div class="menu">    
-                        <a href="../html/login.html"><button id="logout">Logout</button></a>  
+                        <a href="../html/profile.html"><button id="logout">Profile</button></a>  
                     </div>
+                    <div class="menu">    
+                        <a href="../html/index.html"><button id="logout">Logout</button></a>  
+                    </div>
+                    
                 </div>
             </div>
-        </div>            
+        </div>        
         <form class="newstory-form">
             <div>
                 <input class="diary__title" type="text" placeholder="Title">
             </div>
             <div>
-                <textarea class="diary__content" cols="30" rows="10" placeholder="Pen down your feeling?"></textarea>
+                <textarea class="diary__content" cols="30" rows="20" placeholder="Pen down your feeling?"></textarea>
             </div>                  
             <button id="diary-btn" type="submit">Save Diary</button>                   
         </form>
@@ -45,7 +52,7 @@
                             
                             I guess today’s entry is a short one; it is my first one so it is kind of like ripping off a Band-Aid. Tomorrow is my 22nd birthday! I will try to write how it goes.
 
-                            <h3>NOTE: this is a public entry you can delete it if you want! and feel free to write your own entry</h3>
+                            <h3>NOTE: this is a public entry you can delete it if you want! and write your own entry</h3>
                         </p>
                     <div class="btn">
                     <span class="read-btn">EDIT STORY</span>
@@ -53,8 +60,9 @@
                     </div>
                 </div>
             </li>                 
-        </ul>        
+        </ul>   
     </div>
+    
     <script src="../javascript/app.js"></script> 
 </body>
 </html>
