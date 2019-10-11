@@ -11,14 +11,18 @@ body{
     bottom: 0;
     left: 0;
     right: 0;
-    background: url('../images/journalBlur.jpg') no-repeat fixed;
+    /* background: url('../images/journalBlur.jpg') no-repeat fixed; */
     background-size: cover;
 }
 .navbar{
     background-color: #379683;
     height: 56px;
-    position: relative;
     width: 100%;
+    position: fixed;
+    top: 0px;
+}
+.card{
+   margin-top:70px;
 }
 .menu{
     display: inline-block;
@@ -39,7 +43,7 @@ body{
     float: left;
     width: 20%;
 }
-#profile-btn{
+#myEntries-btn{
     width: 80px;
     height: 30px;
     background: white;
@@ -49,7 +53,7 @@ body{
     font-size: 0.75rem;
     float: right;
 }
-#profile-btn:hover{
+#myEntries-btn:hover{
     color: white;
     background:#fc5a36;
     cursor: pointer;
@@ -75,7 +79,6 @@ body{
     transition: 0.2s;
     box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
 }
-
 
 .container {
     width: 100%;
@@ -232,6 +235,7 @@ body{
     border: none;
     outline: none;
     text-align: center;
+
     
 }
   
@@ -261,12 +265,14 @@ padding-left: 5px;
 #diary-btn {
     width: 90px;
     height: 30px;
-    color: black;
+    color: white;
     border: 0;
     border-radius: 4px;
     font-size: 0.75rem;
     margin-left: 25px;
     position: relative;
+    background:  #379683;
+    
     
 }
 #diary-btn:hover{
@@ -281,4 +287,18 @@ padding-left: 5px;
 
 .newstory-form{
     width: 100%;
+    margin-top: 80px;
+}
+.popup-text{
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px 0;
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 10px;
+    font-size: 1rem;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }

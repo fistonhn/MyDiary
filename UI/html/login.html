@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>login</title>
+    <title>login-page</title>
     <link rel="stylesheet" href="../css/signin.css">
 </head>
 <body>
     <div class="general-background">  
+
         <div class="navbar">
             <div>
                     <a href="../html/index.html">
@@ -16,7 +17,7 @@
                     </a>
             </div>
             <div class="login-navbar">
-                <button id="login-btn">LOG IN</button>
+                <a href=""><button id="login-btn">LOG IN</button>
             </div>
             <div class="signup-navbar">
                     <a href="../html/signup.html">
@@ -24,9 +25,11 @@
                     </a>
             </div>
         </div>
+
+
         <div class="form">
             <p class="form-header">Login with your account.</p>
-            <form id="login-form" class="form-login">
+            <div="login-form" class="form-login">
                 <div class="form-control">
                     <input type="email" id="login-email" class="form-input" placeholder="Email" required>
                 </div>
@@ -34,13 +37,14 @@
                     <input type="password" id="login-password" class="form-input" placeholder="Password" required>
                 </div>
                 <div class="form-control">
-                    <button type="submit" class="btn btn__primary is__fullwd">LOG IN</button>
+                    <a href="../html/dashboard.html"> <button class="btn btn__primary is__fullwd">LOG IN</button></a>
                 </div>
                 <span >Don't you have a MyDiary Account?
-                        <a href="../html/signup.html">Sign Up</a>
+                     <a href="./signup.html">Sign Up</a>
                 </span>
-            </form>
-        </div>           
+            </div>
+        </div>
+                
         <footer class="footer">
             <div class="footer-bottom">&copy; 2019| made by FistonHn</div>
         </footer>
