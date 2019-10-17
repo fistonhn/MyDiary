@@ -7,12 +7,13 @@ const addEntry = document.querySelector('.add-entry');
 const MyEntryBtn = document.querySelector('#myEntries-btn');
 const navContainer = document.querySelector('.nav-container');
 const textArea = document.querySelector('.diary__content')
+const deleteDefBtn = document.querySelector('.delete-btn')
 
 
 MyEntryBtn.addEventListener('click',dashboardBtn)
 addEntry.addEventListener('click',addStory);
 editBtn.addEventListener('click',editDiary);
-newEntry.addEventListener('click',removeEntry);
+deleteDefBtn.addEventListener('click',removeDefEntry);
 savebtn.addEventListener('click',saveEntry);
 
 
@@ -37,18 +38,29 @@ function saveEntry(e){
     bodyContainer.appendChild(newEntry);
     let li=document.createElement('li');
     li.className= 'container';
- 
-    // const popup = document.createElement('span')
-    // popup.className = 'popup-text'
-    // popup.appendChild(document.createTextNode('fill title and body!'))  
-    // savebtn.appendChild(popup)
+
+
+
 
     const newTitle= document.querySelector('.diary__title').value;
     const newContent=document.querySelector('.diary__content').value;
     if(newTitle.length==0 || newContent.length==0){
-        alert('fill title and body!')
 
-        // savebtn.classList.toggle("show")
+            //  popup message
+
+    const popup = document.createElement('span');
+    popup.className = 'popup-text';
+
+    popup.appendChild(document.createTextNode('fill title and description!'))  
+       
+    navContainer.appendChild(popup)
+
+        savebtn.classList.toggle("show")
+
+        setTimeout(() => {
+            navContainer.removeChild(popup);
+          }, 3000);
+    
     }
     else{
     const btncontainer=document.createElement('div')
@@ -100,16 +112,10 @@ function newEditBtn(e) {
 
    const editBtn = e.target.parentNode.firstChild;
 
-    console.log(editBtn)
-    console.log(Ncontent)
-
     if( editBtn.textContent ==='EDIT STORY'){
 
 
         Ntitle.focus();
-        Ntitle.blur();
-      
-
 
         Ntitle.contentEditable = true;
         Ncontent.contentEditable = true;
@@ -153,24 +159,105 @@ function editDiary(e){
 }
 }
 
-
     /* remove diary*/
 
-    function removeEntry(e){ 
-    if(e.target.classList.contains('delete-btn')){
-        if(confirm('do you want to delete default diary ?')){
-                  
-            const li= e.target.parentElement.parentElement.parentElement;
-            newEntry.removeChild(li)
-        
+function removeDefEntry(e){ 
+
+const deletBtn = document.querySelector('.delete-btn')
+const li= e.target.parentElement.parentElement.parentElement;
+
+if(deletBtn){   
+      //  popup message
+            
+    const warnCard= document.createElement('span');
+    warnCard.className = 'warn';
+
+    warnCard.appendChild(document.createTextNode('sure you want to delete this entry?'))
+ 
+    const yesNo = document.createElement('div')
+    const yesBtn = document.createElement('button')
+    const noBtn = document.createElement('button')
+
+    yesNo.className = 'yesNo-btn';
+    yesBtn.className = 'yes-btn';
+    noBtn.className = 'no-btn';
+
+    yesBtn.appendChild(document.createTextNode('yes'))
+    noBtn.appendChild(document.createTextNode('no'))
+   
+    yesNo.appendChild(yesBtn)
+    yesNo.appendChild(noBtn)
+
+    warnCard.appendChild(yesNo)     
+    navContainer.appendChild(warnCard)
+
+    newEntry.classList.toggle("show")
+
+    yesNo.addEventListener('click',  (e) => {
+
+        if(e.target.classList.contains('yes-btn')){
+        newEntry.removeChild(li)
+
+        warnCard.remove();
+
         }
-    }
-       else if(e.target.classList.contains('deleteNew')){
-        if(confirm('do you want to delete this diary ?')){
-                  
-            const li= e.target.parentElement.parentElement;
-            newEntry.removeChild(li)
-        
+        else {
+            warnCard.remove();
         }
+
+    })
+ }
+      
+}
+
+
+newEntry.addEventListener('click', removeNewEntry)
+
+function removeNewEntry(e) {
+    if(e.target.textContent === 'DELETE STORY'){
+
+
+    const warnCard= document.createElement('span');
+    warnCard.className = 'warn';
+    warnCard.appendChild(document.createTextNode('sure you want to delete this entry?'))
+ 
+    const yesNo = document.createElement('div')
+    const yesBtn = document.createElement('button')
+    const noBtn = document.createElement('button')
+
+    yesNo.className = 'yesNo-btn'
+    yesBtn.className = 'yes-btn';
+    noBtn.className = 'no-btn';
+
+    yesBtn.appendChild(document.createTextNode('yes'))
+    noBtn.appendChild(document.createTextNode('no'))
+   
+    yesNo.appendChild(yesBtn)
+    yesNo.appendChild(noBtn)
+
+    
+    warnCard.appendChild(yesNo)     
+    navContainer.appendChild(warnCard)
+
+    newEntry.classList.toggle("show")
+
+    const li= e.target.parentNode.parentElement;
+
+    yesNo.addEventListener('click',  (e) => {
+
+        if(e.target.classList.contains('yes-btn')){
+
+        const newEntry = document.querySelector('.card')
+        
+        newEntry.removeChild(li)
+
+    
+        warnCard.remove();
+
+        }  else {
+            warnCard.remove();
+        }
+    })
+
     }
 }
