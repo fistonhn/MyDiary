@@ -3,10 +3,10 @@ const savebtn=document.querySelector('#diary-btn');
 const newEntry=document.querySelector('.card');
 const editBtn=document.querySelector('.read-btn');
 const form = document.querySelector('.newstory-form');
-const bodyContainer = document.querySelector('.general-background');
+const bodyContainer = document.querySelector('.dashboard-general');
 const addEntry = document.querySelector('.add-entry');
 const MyEntryBtn = document.querySelector('#myEntries-btn');
-const navContainer = document.querySelector('.nav-container');
+const navContainer = document.querySelector('.container');
 const textArea = document.querySelector('.diary__content')
 const deleteDefBtn = document.querySelector('.delete-btn')
 
@@ -38,9 +38,7 @@ function saveEntry(e){
 
     bodyContainer.appendChild(newEntry);
     let li=document.createElement('li');
-    li.className= 'container';
-
-
+    li.className= 'card-container';
 
 
     const newTitle= document.querySelector('.diary__title').value;
@@ -70,7 +68,7 @@ function saveEntry(e){
     const deleteBtn= document.createElement('span');
     const editBtn= document.createElement('span');
     
-    btncontainer.className=('new-btn')
+    btncontainer.className='new-btn'
     title.className='new-title-diary'
     content.className='new-content-diary'
     editBtn.className='editNew'
@@ -88,7 +86,7 @@ function saveEntry(e){
     
     li.appendChild(title)
     li.appendChild(content)
-    li.appendChild(btncontainer)
+    content.appendChild(btncontainer)
 
     newEntry.appendChild(li)
 
@@ -99,7 +97,6 @@ function saveEntry(e){
 
 
     /*edit new created entry*/
-
 const editNewBtn=document.querySelector('.card');
  
 editNewBtn.addEventListener('click', newEditBtn)
@@ -107,20 +104,20 @@ editNewBtn.addEventListener('click', newEditBtn)
 function newEditBtn(e) {
 
     
-    const Ntitle= e.target.parentElement.parentElement.firstChild;
+    const Ntitle= e.target.parentNode.parentNode.parentNode.firstChild;
     const Ncontent= e.target.parentElement.parentNode;
-
+    
 
    const editBtn = e.target.parentNode.firstChild;
 
     if( editBtn.textContent ==='EDIT STORY'){
 
 
-        Ntitle.focus();
+       
 
         Ntitle.contentEditable = true;
         Ncontent.contentEditable = true;
-
+        Ntitle.focus();
        
         editBtn.textContent =  'SAVE STORY ';
 
@@ -128,7 +125,8 @@ function newEditBtn(e) {
         else{  editBtn.textContent === 'SAVE STORY'
 
         Ntitle.contentEditable = false;
-        Ncontent.contentEditable = false
+        Ncontent.contentEditable = false;
+
 }        
 }
 
@@ -242,7 +240,7 @@ function removeNewEntry(e) {
 
     newEntry.classList.toggle("show")
 
-    const li= e.target.parentNode.parentElement;
+    const li= e.target.parentNode.parentNode.parentNode;
 
     yesNo.addEventListener('click',  (e) => {
 
@@ -262,3 +260,17 @@ function removeNewEntry(e) {
 
     }
 }
+/* Mobile Menu */
+const mobileMenuBtn = document.querySelector('.menu__btn');
+const mobileMenuWrapper = document.querySelector('.mobile_menu');
+const closeMenuBtn = document.querySelector('.menu__close');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuWrapper.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+  closeMenuBtn.addEventListener('click', () => {
+    mobileMenuWrapper.classList.add('hidden');
+    document.body.style.overflow = 'unset';
+  });
+

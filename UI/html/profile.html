@@ -5,36 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MyProfile</title>
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="general-background">  
-        <nav class="nav"> 
-            <div class="navbar">
-                    <a href="../index.html">
-                        <img class="logo-image" src="../images/logo.png" >
-                    </a>
-                
-                <div class="nav__menu">
-                    <div class="menu__item">
-                            <a href="../html/dashboard.html">
-                        <button class="Add-story " >Add entry</button>
+        <header class="header">
+                <div class="container">
+                    <nav class="nav">
+                            <a href="../index.html">
+                                <img class="logo-image" src="../images/logo.png" >
                             </a>
-                    </div>
-                    <div class="menu__item"> 
-                            <a href="../html/dashboard.html">
-                        <button id="DashBoard-btn" >My entries</button>
-                            </a>
-                    </div>
-                    <div class="menu__item">    
-                            <a href="../html/login.html">
-                        <button id="logout">Logout</button>
-                            </a>
-                    </div>
+                        <button class="btn menu__btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <nav class="mobile_menu hidden">
+                            <button class="btn menu__close">&times;</button>
+                            <ul class="nav__menu">
+                                <li class="menu__item">
+                                    <a href="../index.html">HOME</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a href="../html/dashboard.html">ADD ENTRY</a>
+                                </li>
+                                <li class="menu__item">
+                                    <a href="./login.html">LOG OUT</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <ul class="nav__menu">
+                            <li class="menu__item">
+                               <a href="../index.html">HOME</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="../html/dashboard.html">ADD ENTRY</a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="./login.html">LOG OUT</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </div>
-        </nav>
-        
+            </header> 
+        <div class="background-img">  
         <div class="card-list">
             <img class="profile-image" src="../images/user.png" alt="image">
             <div class="button-container">
@@ -53,10 +66,12 @@
                     </a>
             </div>
         </div>
-        
+        </div>
         <footer class="footer">
-                <div class="footer-bottom">&copy; 2019| made by FistonHn</div>
-        </footer>        
-    </div>
+            <div class="container">
+                <p>&copy; 2019| made by FistonHn</p>
+            </div>
+        </footer>    
+        <script src="../javascript/mobileApp.js"></script> 
 </body>
 </html>
