@@ -1,3 +1,4 @@
+
 const savebtn=document.querySelector('#diary-btn');
 const newEntry=document.querySelector('.card');
 const editBtn=document.querySelector('.read-btn');

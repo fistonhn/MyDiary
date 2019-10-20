@@ -8,32 +8,97 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <div class="general-background"> 
-        <div class="navbar">
+  
+        <header class="header">
+        <div class="container">
+        <nav class="nav">
             <div>
                 <img class="logo-image" src="./images/logo.png" >
             </div>
-            <div class="login-navbar">
-                    <a href="./html/login.html">
-                <button id="login-btn">LOG IN</button>
-                    </a>
-            </div>
-            <div class="signup-navbar">
-                    <a href="./html/signup.html">
-                <button id="signup-btn">SIGN UP</button>
-                    </a>
-            </div>
+            <button class="btn menu__btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="mobile_menu hidden">
+                <button class="btn menu__close">&times;</button>
+                <ul class="nav__menu">
+                    <li class="mobile__item">
+                       <a href="./index.html">HOME</a>
+                    </li>
+                    <li class="mobile__item">
+                       <a href="./html/login.html">LOG IN</a>
+                    </li>
+                    <li class="mobile__item">
+                       <a href="./html/signup.html">SIGN UP</a>
+                    </li>
+                </ul>
+            </nav>
+            <ul class="nav__menu">
+                <li class="menu__item">
+                   <a href="./index.html">HOME</a>
+                </li>
+                <li class="menu__item">
+                   <a href="./html/login.html">LOG IN</a>
+                </li>
+                <li class="menu__item">
+                   <a href="./html/signup.html">SIGN UP</a>
+                </li>
+            </ul>
+        </nav>
         </div>
-        <h3>A diary is the last place to go if you wish to seek the truth <br>
-            about a person. Nobody dares to make the final confession <br>
-            to themselves on paper: or at least, not about love.  .</h3>
+        </header> 
+
+      <main>
+    <div class="general-background"> 
+        <h1>All of life's moments in one place<span class="dot"> .</span></h1>  
+       <h3>A diary is the last place to go if you wish to seek the truth 
+            about a person.<br> Nobody dares to make the final confession 
+            to themselves <br> on paper or at least, not about love.  </h3>
        
         <div class="centre-btn">
             <a href="./html/signup.html" class="getStarted-btn">Create Account</a>
         </div>
-        <footer class="footer">
-            <div class="footer-bottom">&copy; 2019| made by FistonHn</div>
-        </footer>
     </div>
+            <section class="features">
+                <div class="container">
+                  <h2 class="features__title">Features</h2>
+                  <div class="cards">
+                    <div class="card">
+                      <img class="card__logo" src="./images/secure.png" alt="Feature One">
+                      <h3 class="card__title">Secured</h3>
+                      <p class="card__description">My diary is designed with your privacy in mind and that your memories remains
+                        private to you alone.</p>
+                    </div>
+                    <div class="card">
+                      <img class="card__logo" src="./images/stars.png" alt="Feature One">
+                      <h3 class="card__title">Modern UI/UX</h3>
+                      <p class="card__description">Because we care, the app employs the use of the latest cutting-edge
+                        technology in
+                        crafting the rich user interface and overall experience. A ploy to keep you focused on your story.</p>
+                    </div>
+                    <div class="card">
+                      <img class="card__logo" src="./images/bell.png" alt="Feature One">
+                      <h3 class="card__title">Get Notifications</h3>
+                      <p class="card__description">Get daily notifications so you never again miss an oppotunity to write today
+                        in history.</p>
+                    </div>
+                  </div>
+                </div>
+            </section>
+              <section class="cta">
+                <div class="cta__wrapper">
+                  <h2 class="cta__tagline">Don't have an account yet?</h2>
+                  <a href="./html/signup.html" class="cta__btn">Create Account</a>
+                </div>
+              </section>
+            </main> 
+                <footer class="footer">
+                    <div class="container">
+                      <p>&copy; 2019| made by FistonHn</p>
+                    </div>
+                </footer>
+ 
+    <script src="./javascript/mobileApp.js"></script> 
 </body>
 </html>
