@@ -5,27 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>signup-page</title>
-    <link rel="stylesheet" href="../css/createAccount.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="general-background">       
-        <div class="navbar">
-            <div>
-                    <a href="../index.html">
-                <img class="logo-image" src="../images/logo.png" >
-                    </a>
+    <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div>
+                        <img class="logo-image" src="../images/logo.png" >
+                    </div>
+                    <button class="btn menu__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <nav class="mobile_menu hidden">
+                        <button class="btn menu__close">&times;</button>
+                        <ul class="nav__menu">
+                            <li class="mobile__item">
+                                <a href="../index.html">HOME</a>
+                            </li>
+                            <li class="mobile__item">
+                                <a href="./login.html">LOG IN</a>
+                            </li>
+                            <li class="mobile__item">
+                                <a href="./signup.html">SIGN UP</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="nav__menu">
+                        <li class="menu__item">
+                            <a href="../index.html">HOME</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="./login.html">LOG IN</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="./signup.html">SIGN UP</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="login-navbar">
-                    <a href="../html/login.html">
-                <button id="login-btn">LOG IN</button>
-                    </a>
-            </div>
-        </div>
-        <div class="signup-navbar">
-            <button id="signup-btn">SIGN UP</button>
-        </div>
-    
-    <div class="form">
+        </header> 
+    <div class="background-img">      
+    <div class="form-signup">
             <p class="form-header">Create a new account.</p>
         <form id="signup-form" class="form__signup">
             <div class="form-control">
@@ -48,14 +71,18 @@
             <div class="form-control">
                 <button type="submit" class="btn btn__primary is__fullwd">Sign Up</button>
             </div>
-            <span>Already have an account?
+            <div class="signup-link" >Already have an account?
                 <a href="./login.html">Sign In</a>
-            </span>
+            </div>
         </form>
-    </div>   
-    </div>
-        <footer class="footer">
-            <div class="footer-bottom">&copy; 2019| made by FistonHn</div>
-        </footer>
+    </div>  
+</div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2019| made by FistonHn</p>
+        </div>
+    </footer>
+   
+    <script src="../javascript/mobileApp.js"></script> 
 </body>
 </html>
