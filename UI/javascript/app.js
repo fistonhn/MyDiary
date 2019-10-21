@@ -45,7 +45,7 @@ function saveEntry(e){
     const newContent=document.querySelector('.diary__content').value;
     if(newTitle.length==0 || newContent.length==0){
 
-            //  popup message
+            //  fill title and description message
 
     const popup = document.createElement('span');
     popup.className = 'popup-text';
