@@ -8,4 +8,5 @@ const validateSignup = (req, res, next) => {
   next();
 };
 
+
 export { validateSignup };
