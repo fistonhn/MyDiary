@@ -21,5 +21,13 @@ const createNewEntry = (req, res) => {
   res.status(201).json({ status: 201, message: 'entry successfully created', data: entry });
 };
 
+const getOneEntry = (req, res) => {
+  const entry = entries.find((entry) => entry.id === parseInt(req.params.id, 10));
 
-export { getAllEntries, createNewEntry };
+  if (!entry) return res.status(404).json({ status: 404, error: `There is no entry with id ${req.params.id} ` });
+
+  return res.status(200).json({ status: 200, data: entry });
+};
+
+
+export { getAllEntries, createNewEntry, getOneEntry };
