@@ -29,5 +29,16 @@ const getOneEntry = (req, res) => {
   return res.status(200).json({ status: 200, data: entry });
 };
 
+const updateEntry = (req, res) => {
+  const entry = entries.find((entry) => entry.id === parseInt(req.params.id, 10));
 
-export { getAllEntries, createNewEntry, getOneEntry };
+  if (!entry) return res.status(404).json({ status: 404, error: `There is no entry with id ${req.params.id} ` });
+
+  entry.title = req.body.title;
+  entry.description = req.body.description;
+
+  return res.status(200).json({ status: 200, message: '​entry successfully updated', data: entry });
+};
+
+
+export { getAllEntries, createNewEntry, getOneEntry, updateEntry };
