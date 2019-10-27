@@ -1,0 +1,42 @@
+{
+  "name": "server-side",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
+    "start": "nodemon --exec babel-node ./server/app.js "
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "hn Fiston",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.6.0",
+    "babel-eslint": "^10.0.3",
+    "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1"
+  }
+}
