@@ -40,5 +40,17 @@ const updateEntry = (req, res) => {
   return res.status(200).json({ status: 200, message: '​entry successfully updated', data: entry });
 };
 
+const deleteEntry = (req, res) => {
+  const entry = entries.find((entry) => entry.id === parseInt(req.params.id, 10));
 
-export { getAllEntries, createNewEntry, getOneEntry, updateEntry };
+  if (!entry) return res.status(404).json({ status: 404, error: `There is no entry with id ${req.params.id} ` });
+
+  const index = entries.indexOf(entry);
+
+  entries.splice(index, 1);
+
+  return res.status(200).json({ status: 200, message: '​entry successfully deleted' });
+};
+
+
+export { getAllEntries, createNewEntry, getOneEntry, updateEntry, deleteEntry };
