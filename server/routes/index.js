@@ -4,7 +4,7 @@ import validateParams from '../middleware/paramsValidation';
 import validateEntryInput from '../middleware/entryInputValidation';
 import { validateSignup, validateSignin } from '../middleware/userInputValidation';
 import { signup, login } from '../controller/user';
-import { createNewEntry, getAllEntries, getOneEntry } from '../controller/diary';
+import { createNewEntry, getAllEntries, getOneEntry, updateEntry } from '../controller/diary';
 
 const router = express.Router();
 
@@ -22,5 +22,6 @@ router.post('/entries', [verifyAuthToken, validateEntryInput], createNewEntry);
 
 router.get('/entries/:id', [validateParams, verifyAuthToken], getOneEntry);
 
+router.patch('/entries/:id', [validateParams, verifyAuthToken, validateEntryInput], updateEntry);
 
 export default router;
