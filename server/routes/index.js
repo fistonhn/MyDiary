@@ -1,9 +1,10 @@
 import express from 'express';
 import verifyAuthToken from '../middleware/verifyAuthToken';
+import validateParams from '../middleware/paramsValidation';
 import validateEntryInput from '../middleware/entryInputValidation';
 import { validateSignup, validateSignin } from '../middleware/userInputValidation';
 import { signup, login } from '../controller/user';
-import { createNewEntry, getAllEntries } from '../controller/diary';
+import { createNewEntry, getAllEntries, getOneEntry } from '../controller/diary';
 
 const router = express.Router();
 
@@ -18,6 +19,8 @@ router.post('/auth/signin', [validateSignin], login);
 router.get('/entries/', [verifyAuthToken], getAllEntries);
 
 router.post('/entries', [verifyAuthToken, validateEntryInput], createNewEntry);
+
+router.get('/entries/:id', [validateParams, verifyAuthToken], getOneEntry);
 
 
 export default router;
