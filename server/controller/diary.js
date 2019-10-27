@@ -1,3 +1,5 @@
+import Entry from '../models/entryModules';
+
 const entries = [];
 
 const getAllEntries = (req, res) => {
@@ -11,5 +13,13 @@ const getAllEntries = (req, res) => {
   res.status(200).json({ status: 200, data: diaries });
 };
 
+const createNewEntry = (req, res) => {
+  const entry = new Entry(entries.length + 1, new Date().toLocaleString(), req.body.title, req.body.description);
 
-export { getAllEntries };
+  entries.push(entry);
+
+  res.status(201).json({ status: 201, message: 'entry successfully created', data: entry });
+};
+
+
+export { getAllEntries, createNewEntry };
