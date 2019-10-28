@@ -43,6 +43,7 @@ main {
 
 ol,
 ul {
+  margin-right: 20px;
   list-style: none;
 }
 .header-index{
@@ -57,11 +58,11 @@ ul {
 }
 
 .hidden {
+
   display: none;
 }
 
 .mobile_menu {
-  z-index: 20;
   top: 0;
   left: 0;
   right: 0;
@@ -74,7 +75,7 @@ ul {
 .mobile_menu .menu__close {
   position: absolute;
   top: 4px;
-  right: 12px;
+  right: 15px;
   font-size: 2rem;
   color: #f5ffc3;
   padding: 1px 15px;
@@ -99,10 +100,10 @@ ul {
   justify-content: space-between;
   align-items: center;
   height: 60px;
-
 }
 .nav__menu {
   display: none;
+
 }
 .nav .menu__btn {
   display: flex;
@@ -126,8 +127,11 @@ ul {
 .nav .menu__item {
   display: inline-block;
   padding: 0 5px;
+
 }
 .menu__item span {
+  margin-left: 150px;
+
   padding-top: 12px;
   display: inline-block;
   width: 100px;
@@ -213,6 +217,7 @@ ul {
 }
 
 .btn {
+  margin-right: 20px;
   display: inline-block;
   position: relative;
   font-family: inherit;
@@ -719,6 +724,7 @@ font-family: Arial, Helvetica, sans-serif;
 
 
 .logo-image{
+    margin-left: 20px;
     height: 50px;  
 }
   .centre-btn {
@@ -740,21 +746,21 @@ font-family: Arial, Helvetica, sans-serif;
   }
 
   .footer {
-    text-align: center;
     
-  }
-  
-  .footer p {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: center;
     font-size: 15px;
-    color: #000;
+    color:white;
+    position: absolute;
+    bottom: 20px;
   }
+
   /* general-background */
 
 
   .general-background {
-    padding: 40px 0;
+    padding: 120px 0px;
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)),url('../images/journal.jpg');
     background-repeat: no-repeat;
@@ -763,7 +769,7 @@ font-family: Arial, Helvetica, sans-serif;
 
   h3{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
     font-family:'Arial Narrow Bold', sans-serif;
     font-size: 1.3rem;
     font-weight: 300;
@@ -776,7 +782,7 @@ font-family: Arial, Helvetica, sans-serif;
     color: #fc5a36;
   }
   h1{
-  margin-top: 30px;
+  margin-top: 60px;
   font-size: 3.4rem;
   font-weight: 700;
   line-height: 1;
@@ -786,87 +792,6 @@ font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
   } 
-
-
-/* features and cards in index pages */
-
-  .features__title {
-    margin-top: 20px;
-    padding: 50px 0;
-    text-align: center;
-    font-weight: 300;
-    font-size: 2rem;
-    letter-spacing: 2px;
-  }
-  .features__title::after {
-    content: '';
-    height: 2px;
-    width: 5%;
-    background: #fc5a36;
-    display: block;
-    margin: 10px auto 0;
-  }
-  .cards {
-    margin-top: -70px;
-    display: flex;
-    flex-direction: column;
-  }
-  .features .cards .card {
-    background: #addfc1;
-    margin-bottom: 20px;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.08);
-  }
-  .features .cards .card__logo {
-    width: 15%;
-    opacity: 0.7;
-    margin-bottom: 10px;
-  }
-  .features .cards .card__title {
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-top: 10px;
-  }
-  .features .cards .card__description {
-    margin: 15px 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    font-weight: 300;
-  }
-  
-  .cta {
-    height: 150px;
-  }
-  .cta__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  .cta__tagline {
-    margin-bottom: 25px;
-    font-weight: 400;
-    font-size: 1.4rem;
-  }
-  .cta__btn {
-    text-decoration: none;
-    background: #fc5b37;
-    color: #0d0d0d;
-    font-size: 1.1rem;
-    margin-right: 10px;
-    padding: 12px 30px;
-    border-radius: 5px;
-    transition: box-shadow 0.1s ease-in;
-    box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2), color 0.3s ease;
-  }
-  .cta__btn:hover {
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-    color: #fff;
-  }
 
   /* KeyFrames */
 
@@ -894,16 +819,6 @@ font-family: Arial, Helvetica, sans-serif;
 }
 }
 @media screen and (min-width: 1024px) {
-  .features .cards {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .features .card {
-    width: 33%;
-  }
-
   .form {
     width: 30%;
   }
