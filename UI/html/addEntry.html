@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add entry</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="dashboard-general">
+
+        <header class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div>
+                        <a href="../index.html">
+                        <img class="logo-image" src="../images/logo.png" >
+                        </a>
+                    </div>
+                    <button class="btn menu__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <nav class="mobile_menu hidden">
+                        <button class="btn menu__close">&times;</button>
+                        <ul class="nav__menu">
+                            <li class="mobile__item">
+                                <a href="./dashboard.html" >MY ENTRIES</a>
+                            </li>
+                            <li class="mobile__item">
+                                <a href="./profile.html">PROFILE</a>
+                            </li>
+                            <li class="mobile__item">
+                                <a href="../index.html">LOG OUT</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <ul class="nav__menu">
+                        <li class="menu__item">
+                            <a href="./dashboard.html" >MY ENTRIES</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="./profile.html" >PROFILE</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="../index.html">LOG OUT</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header> 
+        <form class="newstory-form">
+            <div>
+                <input class="diary__title"  type="text"  placeholder="Title">
+            </div>
+            <div>
+                <textarea  class="diary__content" cols="30" rows="15" placeholder="Pen down your feeling"></textarea>
+            </div>                  
+            <button id="diary-btn" type="submit">SAVE STORY </button>                   
+        </form>
+        
+        <ul class="card" >                 
+        </ul>   
+    </div> 
+   
+    <script src="../javascript/app.js"></script> 
+</body>
+</html>

@@ -24,5 +24,8 @@ module.exports = {
     'object-curly-newline':'off', 
     'no-shadow':'off',
     'max-len':'off',
-     'no-undef':'off', }
+    'no-undef':'off',
+    'eqeqeq': 'off',
+    'no-unused-expressions': 'off',
+    'no-use-before-define': 'off', }
 };
