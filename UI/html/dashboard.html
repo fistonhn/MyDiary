@@ -27,7 +27,7 @@
                         <button class="btn menu__close">&times;</button>
                         <ul class="nav__menu">
                             <li class="mobile__item">
-                                <a href="./dashboard.html" >ADD ENTRY</a>
+                                <a  href="./addEntry.html" >ADD ENTRY</a>
                             </li>
                             <li class="mobile__item">
                                 <a href="./profile.html">PROFILE</a>
@@ -39,10 +39,7 @@
                     </nav>
                     <ul class="nav__menu">
                         <li class="menu__item">
-                            <span class="add-entry"  >ADD ENTRY</span> 
-                        </li>
-                        <li class="menu__item">
-                            <span id="myEntries-btn" >MY ENTRIES</span> 
+                            <a href="./addEntry.html" >ADD ENTRY</a>
                         </li>
                         <li class="menu__item">
                             <a href="./profile.html" >PROFILE</a>
@@ -54,20 +51,52 @@
                 </nav>
             </div>
         </header> 
-        <form class="newstory-form">
-            <div>
-                <input class="diary__title" type="text" placeholder="Title">
-            </div>
-            <div>
-                <textarea class="diary__content" cols="30" rows="20" placeholder="Pen down your feeling?"></textarea>
-            </div>                  
-            <button id="diary-btn" type="submit">SAVE STORY </button>                   
-        </form>
-        
-        <ul class="card" >                 
-        </ul>   
+
+        <div class="entries">
+                <div class="entry-item">
+                  <h4 class="title-story">How should I feel?.</h4>
+                  <p >
+                    I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months 
+                    finally seems to be on the same page as me and work is somewhat good too. </p>
+                    <h4 class="date">WrittenOn: 07/20/2019</h4>
+                  <button class="read-more-btn" onclick="window.location.href = './myStory.html'"> Read More</button>
+                </div>
+    
+                <div class="entry-item">
+                  <h4 class="title-story">How should I feel?</h4>
+                  <p >
+                    I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months 
+                    finally seems to be on the same page as me and work is somewhat good too. </p>
+                    <h4 class="date">WrittenOn: 07/20/2019</h4>
+                  <button class="read-more-btn" onclick="window.location.href = './myStory.html'"> Read More</button>
+                </div>
+    
+                <div class="entry-item">
+                  <h4 class="title-story">How should I feel?</h4>
+                  <p >
+                    I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months 
+                    finally seems to be on the same page as me and work is somewhat good too. </p>
+                    <h4 class="date">WrittenOn: 07/20/2019</h4>
+                  <button class="read-more-btn" onclick="window.location.href = './myStory.html'"> Read More</button>
+                </div> 
+                <div class="entry-item">
+                        <h4 class="title-story">How should I feel?</h4>
+                    <p >
+                    I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months 
+                    finally seems to be on the same page as me and work is somewhat good too. </p>
+                    <h4 class="date">WrittenOn: 07/20/2019</h4>
+                    <button class="read-more-btn" onclick="window.location.href = './myStory.html'"> Read More</button>
+                </div> 
+                <div class="entry-item">
+                    <h4 class="title-story">How should I feel?</h4>
+                      <p >
+                          I feel great. I am moving into a new apartment, the man I have been seeing for almost 7 months 
+                          finally seems to be on the same page as me and work is somewhat good too. </p>
+                          <h4 class="date">WrittenOn: 07/20/2019</h4>
+                    <button class="read-more-btn" onclick="window.location.href = './myStory.html'"> Read More</button>
+                </div> 
     </div> 
    
-    <script src="../javascript/app.js"></script> 
+    <script src="../javascript/mobileApp.js"></script> 
 </body>
 </html>
