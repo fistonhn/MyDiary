@@ -5,14 +5,12 @@ const mobileMenuWrapper = document.querySelector('.mobile_menu');
 const closeMenuBtn = document.querySelector('.menu__close');
 
 
-savebtn.addEventListener('click', saveEntry);
-
-function saveEntry(e) {
+savebtn.addEventListener('click', (e) => {
   e.preventDefault();
 
   const newTitle = document.querySelector('.diary__title').value;
   const newContent = document.querySelector('.diary__content').value;
-  if (newTitle.length == 0 || newContent.length == 0) {
+  if (newTitle.length === 0 || newContent.length === 0) {
     //  popup message
 
     const popup = document.createElement('span');
@@ -30,7 +28,7 @@ function saveEntry(e) {
   } else {
     window.location.href = './dashboard.html';
   }
-}
+});
 
 /* Mobile Menu */
 
