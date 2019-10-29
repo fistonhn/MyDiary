@@ -5,7 +5,9 @@ module.exports = {
     ecmaVersion: 6
   },
   env: {
-    mocha: true
+    mocha: true,
+    "browser": true,
+    "node": true
   },
   rules: {
     'linebreak-style': 'off',
@@ -24,5 +26,5 @@ module.exports = {
     'object-curly-newline':'off', 
     'no-shadow':'off',
     'max-len':'off',
-     'no-undef':'off', }
+ }
 };

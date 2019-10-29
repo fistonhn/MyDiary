@@ -43,7 +43,7 @@ main {
 
 ol,
 ul {
-  margin-right: 20px;
+  margin-right: 50px;
   list-style: none;
 }
 .header-index{
@@ -131,7 +131,6 @@ ul {
 }
 .menu__item span {
   margin-left: 150px;
-
   padding-top: 12px;
   display: inline-block;
   width: 100px;
@@ -187,7 +186,7 @@ ul {
 }
 .mobile__item a{
   color: black;
-  padding: 20px;
+  padding: 40px;
   display: inline-block;
   font-size: 4rem;
   text-align: center;
@@ -214,6 +213,10 @@ ul {
   color: white;
   background: #fc5a36;
   width: 400px;
+}
+.logo-image{
+  margin-left: 50px;
+  height: 50px;  
 }
 
 .btn {
@@ -507,50 +510,21 @@ ul {
   margin: 5px;
 }
 
-/* view story */
-
-.story-container{
-  margin-top: 100px;
-  background: transparent;
-  width: 100%;
-  border: none;
-  outline: none;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.story-title{
-  width: 100%;
-  text-align: center;
-  padding: 20px;
-  font-size: 2.3rem;
-  font-weight: 800;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.story-description{
-  width: 100%;
-  line-height: 1.5;
-  font-size: 1.1em;
-  padding: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 /*diary text area */
 
-
-.diary-message {
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 30px;
-}  
 .diary__title, .diary__content {
+
   background: transparent;
   width: 100%;
   border: none;
   outline: none;
-  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .diary__title {
+  padding-right: 50px;
+  padding-left: 50px;
   font-size: 2.3rem;
   font-weight: 800;
   display: block;
@@ -558,22 +532,22 @@ ul {
 }
 .diary__content::placeholder{
 color: rgb(53, 51, 51);
-padding-left: 5px;
 font-family: Arial, Helvetica, sans-serif;
 }
 .diary__title::placeholder{
+
   color: rgb(85, 84, 84);
-  padding-left: 5px;
   font-family: Arial, Helvetica, sans-serif;
 }
-    
 .diary__content {
+  padding-right: 50px;
+  padding-top: 30px;
+  padding-left: 50px;
+  box-sizing: border-box;
   font-family: inherit;
   line-height: 1.5;
   font-weight: 400;
   font-size: 1em;
-  padding: 5px;
-  padding-left: 5px; 
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -584,10 +558,10 @@ font-family: Arial, Helvetica, sans-serif;
   border: 0;
   border-radius: 4px;
   font-size: 0.75rem;
-  margin-left: 25px;
+  margin-left: 45%;
   position: relative;
   background:  #379683;
-  top: -200px;
+  top: 30px;
 }
 #diary-btn:hover{
   color: white;
@@ -598,10 +572,10 @@ font-family: Arial, Helvetica, sans-serif;
   box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
   
 }
-
 .newstory-form{
+  height: 0px;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 .popup-text{
   margin-left: 20%;
@@ -724,12 +698,6 @@ font-family: Arial, Helvetica, sans-serif;
   width: 150px;
 }
 
-
-
-.logo-image{
-    margin-left: 20px;
-    height: 50px;  
-}
   .centre-btn {
     margin-top: 80px;
     display: flex;
