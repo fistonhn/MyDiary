@@ -43,7 +43,7 @@ main {
 
 ol,
 ul {
-  margin-right: 20px;
+  margin-right: 50px;
   list-style: none;
 }
 .header-index{
@@ -131,7 +131,6 @@ ul {
 }
 .menu__item span {
   margin-left: 150px;
-
   padding-top: 12px;
   display: inline-block;
   width: 100px;
@@ -187,7 +186,7 @@ ul {
 }
 .mobile__item a{
   color: black;
-  padding: 20px;
+  padding: 40px;
   display: inline-block;
   font-size: 4rem;
   text-align: center;
@@ -214,6 +213,10 @@ ul {
   color: white;
   background: #fc5a36;
   width: 400px;
+}
+.logo-image{
+  margin-left: 50px;
+  height: 50px;  
 }
 
 .btn {
@@ -517,8 +520,8 @@ ul {
 }
 
 .diary__title {
-  padding-right: 30px;
-  padding-left: 40px;
+  padding-right: 50px;
+  padding-left: 50px;
   font-size: 2.3rem;
   font-weight: 800;
   display: block;
@@ -534,9 +537,9 @@ font-family: Arial, Helvetica, sans-serif;
   font-family: Arial, Helvetica, sans-serif;
 }
 .diary__content {
-  padding-right: 30px;
+  padding-right: 50px;
   padding-top: 30px;
-  padding-left: 40px;
+  padding-left: 50px;
   box-sizing: border-box;
   font-family: inherit;
   line-height: 1.5;
@@ -693,12 +696,6 @@ font-family: Arial, Helvetica, sans-serif;
   width: 150px;
 }
 
-
-
-.logo-image{
-    margin-left: 20px;
-    height: 50px;  
-}
   .centre-btn {
     margin-top: 80px;
     display: flex;
