@@ -90,6 +90,9 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal(201);
         expect(res.body.message).to.equal('User created successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fiston');
         done();
       });
   });
