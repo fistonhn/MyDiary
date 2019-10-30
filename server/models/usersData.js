@@ -2,14 +2,13 @@ const usersTest = [
 
   // sign up user index 0 to 4
   {
-    firstName: '',
     lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
   },
   {
     firstName: 'hbn',
-    lastName: 12345,
+    lastName: '',
     email: 'fiston@mail.com',
     password: '123456',
   },
