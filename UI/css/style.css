@@ -24,10 +24,11 @@ html {
 
 html,
 body {
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #f1f1f1;
+  background: white;
   font-size: 100%;
   height: 100%;
 }
@@ -457,6 +458,55 @@ ul {
   
 }
 
+/* modify entry */
+.entry-title{
+  margin-left: 50%;
+  font-size: 1.5rem;
+}
+.entry-editor{
+  border: solid black;
+  border-radius: 5px;
+  margin: 10px 15%;
+  width: 80%;
+  height: 350px;
+  padding: 20px;
+  font-size: 1.2rem;
+}
+
+.entry-editor-container{
+  margin-top: 100px;
+  margin-left: -50px;
+ 
+}
+.edit-title{
+  border-radius: 5px;
+  border: solid black;
+  font-size: 1.5rem;
+  width: 80%;
+  margin: 10px 15%;
+  padding: 5px;
+}
+
+.update-btn{
+  margin-bottom: 20px;
+  background: #379683;
+  margin-left: 15%;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.update-btn:hover{
+  color: white;
+  background:#fc5a36;
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+  transition: 0.2s;
+  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
+  
+}
+
 
 
 /*diary text area */
@@ -554,6 +604,7 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /* end of dashboard */
+
 
 
 /*profile settings*/
