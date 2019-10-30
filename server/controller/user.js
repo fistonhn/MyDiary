@@ -20,7 +20,7 @@ const signup = (req, res) => {
   users.push(user);
 
 
-  res.status(201).json({ status: 201, message: 'User created successfull', data: { token } });
+  res.status(201).json({ status: 201, message: 'User created successfull', data: { token, firstName, lastName } });
 };
 
 const login = (req, res) => {
