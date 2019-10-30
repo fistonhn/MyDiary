@@ -13,7 +13,6 @@ const verifyAuthToken = (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_PRIVATE_KEY, (err) => {
     if (err) return res.status(401).json({ error: 'Unauthorised or Invalid Token', err });
-
     next();
   });
 };
