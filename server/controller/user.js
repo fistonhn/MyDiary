@@ -22,7 +22,7 @@ const signup = (req, res) => {
 
   const data = {
     token,
-    userInfo: lodash.pick(user, ['firstName', 'lastName', 'emil']),
+    userInfo: lodash.pick(user, ['firstName', 'lastName', 'email']),
   };
 
   res.status(201).json({ status: 201, message: 'User created successfull', data });
@@ -32,14 +32,19 @@ const login = (req, res) => {
   const { email, password } = req.body;
 
   const usersFound = users.find(((userInfo) => userInfo.email === email));
-  if (!usersFound) return res.status(404).send({ status: 404, message: 'No associated account with this email. 😩' });
+  if (!usersFound) return res.status(404).send({ status: 404, error: 'No associated account with this email. 😩' });
 
   const isPasswordValid = decryptPassword(password, usersFound.password);
   if (!isPasswordValid) return res.status(401).json({ status: 401, error: 'Incorrect password!' });
 
-  const token = generateToken(usersFound.id, usersFound.email);
+  const token = generateToken(usersFound.id);
 
-  res.status(200).json({ status: 200, message: 'loggin successfull', data: { token } });
+  const data = {
+    token,
+    userInfo: lodash.pick(usersFound, ['firstName', 'lastName', 'email']),
+  };
+
+  res.status(200).json({ status: 200, message: 'loggin successfull', data });
 };
 
 export { signup, login, users };

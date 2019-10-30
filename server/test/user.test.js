@@ -124,6 +124,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"email" is required');
         done();
       });
   });
@@ -137,6 +138,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"password" must be a string');
         done();
       });
   });
@@ -150,6 +152,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(404);
         expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('No associated account with this email. 😩');
         done();
       });
   });
@@ -163,6 +166,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.status).to.equal(401);
+        expect(res.body.error).to.equal('Incorrect password!');
         done();
       });
   });
@@ -176,6 +180,11 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('loggin successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fiston');
+        expect(res.body.data.userInfo.email).to.equal('fiston@gmail.com');
         done();
       });
   });
