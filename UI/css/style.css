@@ -350,7 +350,7 @@ ul {
   
 }
 #all-entries {
-  padding-bottom: 70px;
+
   height: 100%;
 }
 .entries {
@@ -381,10 +381,6 @@ ul {
   font-size: 1rem;
   border-bottom: #444 solid 1px;
 }
-.entry-item .title {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
 .entry-item .date {
   float: right;
   font-size: 0.75rem;
@@ -395,7 +391,71 @@ ul {
   font-size: 1.3rem;
   margin-bottom: 5px;
 }
+/* view specific  */
+.view-specific-general{
+  background: white;
+}
+.entry {
+  height: 93%;
+  margin-top: 80px;
+  background: white;
 
+}
+.view-entry-item {
+  font-size: 1.3rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.btn-c{
+  margin-left: 11%;
+  margin-top: 30px;
+}
+
+
+.read-btn{
+  background: #379683;
+  margin-right: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: inherit;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.read-btn:hover{
+  color: white;
+  background:#fc5a36;
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+  transition: 0.2s;
+  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
+  
+}
+.delete-btn{
+
+  background: #379683;
+  margin-right: 20px;
+  display: inline-block;
+  position: relative;
+  font-family: inherit;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.delete-btn:hover{
+  color: white;
+  background:#fc5a36;
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+  transition: 0.2s;
+  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
+  
+}
 
 
 
@@ -492,63 +552,6 @@ font-family: Arial, Helvetica, sans-serif;
   border-style: solid;
   border-color: #fc5a36 transparent transparent transparent;
 }
-
-
-.warn{
-  margin-left: 20%;
-  width: 50%;
-  background-color: #fc5a36;
-  color: #fff;
-  text-align: center;
-  border-radius: 8px;
-  position: absolute;
-  font-size: 1.2rem;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  top: 50px;
-  padding: 10px;
-
-}
-
-.yes-btn{
-  width: 30%;
-  height: 30px;
-  background: white;
-  color: black;
-  border: 0;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  margin-right: 10%;
-}
-.no-btn{
-  margin-left: 10%;
-  width: 30%;
-  height: 30px;
-  background: white;
-  color: black;
-  border: 0;
-  border-radius: 4px;
-  font-size: 0.75rem;
-}
-.no-btn:hover{
-  color: white;
-  background:#379683;
-  cursor: pointer;
-  transform: scale(1.05, 1.05);
-  transition: 0.2s;
-  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
-}
-.yes-btn:hover{
-  color: white;
-  background:#379683;
-  cursor: pointer;
-  transform: scale(1.05, 1.05);
-  transition: 0.2s;
-  box-shadow: 2px 4px 8px 0px rgba(153, 153, 153, 0.5);
-}
-.yesNo-btn{
- padding-top: 10px; 
-}
-
 
 /* end of dashboard */
 
