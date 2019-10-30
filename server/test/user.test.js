@@ -33,6 +33,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"firstName" is required');
         done();
       });
   });
@@ -46,6 +47,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"lastName" is not allowed to be empty');
         done();
       });
   });
@@ -59,6 +61,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"email" must be a valid email');
         done();
       });
   });
@@ -72,6 +75,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"password" length must be at least 6 characters long');
         done();
       });
   });
@@ -85,6 +89,10 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('User created successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fiston');
         done();
       });
   });

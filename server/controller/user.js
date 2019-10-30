@@ -1,3 +1,4 @@
+import lodash from 'lodash';
 import User from '../models/userModel';
 import generateToken from '../helper/generateAuthToken';
 import { encryptPassword, decryptPassword } from '../helper/hashedPassword';
@@ -15,12 +16,16 @@ const signup = (req, res) => {
   password = encryptPassword(password);
   const user = new User(id, firstName, lastName, email, password);
 
-  const token = generateToken(id, user.email);
+  const token = generateToken(id);
 
   users.push(user);
 
+  const data = {
+    token,
+    userInfo: lodash.pick(user, ['firstName', 'lastName', 'emil']),
+  };
 
-  res.status(201).json({ status: 201, message: 'User created successfull', data: { token } });
+  res.status(201).json({ status: 201, message: 'User created successfull', data });
 };
 
 const login = (req, res) => {
