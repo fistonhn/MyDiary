@@ -33,7 +33,7 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -67,7 +67,7 @@ describe('When the user try to create a new entry--- POST entry,api/v1/entries',
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -134,7 +134,7 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -170,7 +170,7 @@ describe('When the user tries to view a specific entry--- GET entry,api/v1/entri
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -332,7 +332,7 @@ describe('delete entry, --api/v1/entries/id', () => {
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });

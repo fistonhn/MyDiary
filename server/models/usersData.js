@@ -59,6 +59,12 @@ const usersTest = [
     email: 'fiston@gmail.com',
     password: '123456',
   },
+  {
+    firstName: 'hbn',
+    lastName: 'fiston',
+    email: 'fiston@gmail.com',
+    password: '123456',
+  },
 
 ];
 

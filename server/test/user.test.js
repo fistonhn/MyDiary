@@ -84,8 +84,9 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
       .request(app)
       .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
-      .send(usersTest[4])
+      .send(usersTest[5])
       .end((err, res) => {
+        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal(201);
@@ -101,7 +102,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
       .request(app)
       .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
-      .send(usersTest[5])
+      .send(usersTest[11])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(409);
