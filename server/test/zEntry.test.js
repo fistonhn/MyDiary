@@ -1,18 +1,18 @@
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 
 import app from '../app';
 import usersTest from '../models/usersData';
 import entriesTest from '../models/entriesData';
+import { generateToken } from '../helper/generateAuthToken';
 
 
 const { expect } = chai;
 chai.use(chaiHttp);
 dotenv.config();
 
-const token = jwt.sign({ email: usersTest[4].email }, process.env.JWT_PRIVATE_KEY, { expiresIn: '1h' });
+const token = generateToken(usersTest[4].id);
 const invalidToken = '';
 
 // GET all entries but no entry created
@@ -222,6 +222,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
       .patch('/api/v1/entries/1')
       .end((err, res) => {
         expect(res.status).to.equal(401);
+        expect(res.body.err).to.equal('Unauthorised - Header Not Set');
         done();
       });
   });
@@ -232,7 +233,8 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
+        expect(res.body.error).to.equal('Invalid token');
         done();
       });
   });
@@ -246,6 +248,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"id" must be a number');
         done();
       });
   });
@@ -260,6 +263,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"title" must be a string');
         done();
       });
   });
@@ -274,6 +278,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"description" must be a string');
         done();
       });
   });
@@ -302,6 +307,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('entry successfully updated');
         done();
       });
   });

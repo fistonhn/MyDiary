@@ -25,6 +25,7 @@ const usersTest = [
     password: '12',
   },
   {
+    id: 1,
     firstName: 'hbn',
     lastName: 'fiston',
     email: 'fiston@gmail.com',
