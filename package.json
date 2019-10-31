@@ -7,9 +7,9 @@
     "test": "test"
   },
   "scripts": {
+    "start": "babel-node app.js",
     "test": "nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
-    "devStart": "nodemon --exec babel-node ./server/app.js ",
-    "start": "babel-node ./server/app.js ",
+    "devStart": "nodemon --exec babel-node app.js ",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "showCoverage": "start coverage/server/index.html"
   },
