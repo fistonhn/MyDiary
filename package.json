@@ -32,9 +32,11 @@
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "joi": "^14.3.1",
+    "js-yaml": "^3.13.1",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1"
