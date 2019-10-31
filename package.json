@@ -1,7 +1,7 @@
 {
   "name": "server-side",
   "version": "1.0.0",
-  "description": "",
+  "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
   "main": "app.js",
   "directories": {
     "test": "test"
