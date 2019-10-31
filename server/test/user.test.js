@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../app';
+import app from '../../app';
 import usersTest from '../models/usersData';
 
 const { expect } = chai;
@@ -86,7 +86,6 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
       .set('Accept', 'application/json')
       .send(usersTest[5])
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal(201);
