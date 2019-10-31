@@ -1,7 +1,7 @@
 {
   "name": "server-side",
   "version": "1.0.0",
-  "description": "",
+  "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -9,7 +9,9 @@
   "scripts": {
     "test": "nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
     "devStart": "nodemon --exec babel-node ./server/app.js ",
-    "start": "babel-node ./server/app.js "
+    "start": "babel-node ./server/app.js ",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "showCoverage": "start coverage/server/index.html"
   },
   "repository": {
     "type": "git"
@@ -21,7 +23,6 @@
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
-    "coveralls": "^3.0.7",
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
@@ -34,10 +35,12 @@
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "heroku": "^7.33.3",
     "joi": "^14.3.1",
+    "js-yaml": "^3.13.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
     "mocha": "^6.2.1",
