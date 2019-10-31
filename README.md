@@ -1,6 +1,7 @@
 # MyDiary
 
-[![Build Status](https://travis-ci.org/amilykassim/PropertyProLite.svg?branch=develop)](https://travis-ci.org/amilykassim/PropertyProLite)       [![Coverage Status](https://coveralls.io/repos/github/amilykassim/PropertyProLite/badge.svg?branch=develop)](https://coveralls.io/github/amilykassim/PropertyProLite?branch=develop)       [![Maintainability](https://api.codeclimate.com/v1/badges/3dbe4a90345d8b162c9b/maintainability)](https://codeclimate.com/github/amilykassim/PropertyProLite/maintainability)
+[![Build Status](https://travis-ci.org/fistonhn/MyDiary.svg?branch=develop)](https://travis-ci.org/fistonhn/MyDiary)
+[![Coverage Status](https://coveralls.io/repos/github/fistonhn/MyDiary/badge.svg?branch=develop)](https://coveralls.io/github/fistonhn/MyDiary?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/b5f5c43031e8390e4425/maintainability)](https://codeclimate.com/github/fistonhn/MyDiary/maintainability)
 
 # Project Overview
 
