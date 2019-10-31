@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 import User from '../models/userModel';
-import generateToken from '../helper/generateAuthToken';
+import { generateToken } from '../helper/generateAuthToken';
 import { encryptPassword, decryptPassword } from '../helper/hashedPassword';
 
 

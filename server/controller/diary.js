@@ -37,7 +37,7 @@ const updateEntry = (req, res) => {
   entry.title = req.body.title;
   entry.description = req.body.description;
 
-  return res.status(200).json({ status: 200, message: '​entry successfully updated', data: entry });
+  return res.status(200).json({ status: 200, message: 'entry successfully updated', data: entry });
 };
 
 const deleteEntry = (req, res) => {

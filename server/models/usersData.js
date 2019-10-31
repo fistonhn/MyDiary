@@ -25,6 +25,7 @@ const usersTest = [
     password: '12',
   },
   {
+    id: 1,
     firstName: 'hbn',
     lastName: 'fiston',
     email: 'fiston@gmail.com',
@@ -55,6 +56,12 @@ const usersTest = [
     password: 'fiston',
   },
   {
+    email: 'fiston@gmail.com',
+    password: '123456',
+  },
+  {
+    firstName: 'hbn',
+    lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
   },
