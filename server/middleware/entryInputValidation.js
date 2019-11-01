@@ -1,4 +1,4 @@
-import entryInput from '../helper/entryInput';
+import { entryInput, entryCreated } from '../helper/entryInput';
 
 const validateEntryInput = (req, res, next) => {
   const { error } = entryInput(req);
@@ -7,4 +7,12 @@ const validateEntryInput = (req, res, next) => {
   next();
 };
 
-export default validateEntryInput;
+const validateEntryCreated = (req, res, next) => {
+  const { error } = entryCreated(req);
+  if (error) return res.status(400).json({ status: res.statusCode, error: error.details[0].message });
+
+  next();
+};
+
+
+export { validateEntryInput, validateEntryCreated };

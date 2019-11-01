@@ -1,7 +1,7 @@
 import express from 'express';
 import verifyAuthToken from '../middleware/verifyAuthToken';
 import validateParams from '../middleware/paramsValidation';
-import validateEntryInput from '../middleware/entryInputValidation';
+import { validateEntryInput, validateEntryCreated } from '../middleware/entryInputValidation';
 import { validateSignup, validateSignin } from '../middleware/userInputValidation';
 import { signup, login } from '../controller/user';
 import { createNewEntry, getAllEntries, getOneEntry, updateEntry, deleteEntry } from '../controller/diary';
@@ -18,7 +18,7 @@ router.post('/auth/signin', [validateSignin], login);
 
 router.get('/entries/', [verifyAuthToken], getAllEntries);
 
-router.post('/entries', [verifyAuthToken, validateEntryInput], createNewEntry);
+router.post('/entries', [verifyAuthToken, validateEntryCreated], createNewEntry);
 
 router.get('/entries/:id', [validateParams, verifyAuthToken], getOneEntry);
 

@@ -1,21 +1,22 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import { users } from '../controller/user';
+import { verifyAuthToken } from '../helper/generateAuthToken';
 
-dotenv.config();
-
-const verifyAuthToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  if (typeof authHeader === 'undefined') {
-    res.status(401).json({ err: 'Unauthorised - Header Not Set' });
-    return;
-  }
-  const token = authHeader;
 
-  jwt.verify(token, process.env.JWT_PRIVATE_KEY, (err) => {
-    if (err) return res.status(401).json({ error: 'Unauthorised or Invalid Token', err });
+  if (typeof authHeader === 'undefined') return res.status(401).json({ err: 'Unauthorised - Header Not Set' });
+
+  try {
+    const decoded = verifyAuthToken(authHeader);
+
+    const authUserId = users.find((user) => user.id === decoded);
+    if (!authUserId) return res.status(401).send({ status: 401, error: 'You are not authorized to perform this action' });
 
     next();
-  });
+  } catch (error) {
+    res.status(400).json({ status: res.statusCode, error: 'Invalid token' });
+  }
 };
 
-export default verifyAuthToken;
+
+export default verifyToken;

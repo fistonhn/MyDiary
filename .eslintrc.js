@@ -5,12 +5,14 @@ module.exports = {
     ecmaVersion: 6
   },
   env: {
-    mocha: true
+    mocha: true,
+    "browser": true,
+    "node": true
   },
   rules: {
     'linebreak-style': 'off',
     'no-console': 'off',
-    camelcase: 'off',
+    'camelcase': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
     'consistent-return': 'off',
@@ -23,5 +25,6 @@ module.exports = {
     'import/prefer-default-export':'off',
     'object-curly-newline':'off', 
     'no-shadow':'off',
-    'max-len':'off', }
+    'max-len':'off',
+ }
 };

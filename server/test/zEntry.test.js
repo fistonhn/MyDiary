@@ -1,20 +1,21 @@
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 
-import app from '../app';
+import app from '../../app';
 import usersTest from '../models/usersData';
 import entriesTest from '../models/entriesData';
+import { generateToken } from '../helper/generateAuthToken';
 
 
 const { expect } = chai;
 chai.use(chaiHttp);
 dotenv.config();
 
-const token = jwt.sign({ email: usersTest[4].email }, process.env.JWT_PRIVATE_KEY, { expiresIn: '1h' });
+const token = generateToken(usersTest[4].id);
+const unthToken = generateToken(usersTest[12].id);
 const invalidToken = '';
-
+const secondToken = generateToken(usersTest[15].id);
 // GET all entries but no entry created
 describe('When users tries to view all their diaries--- GET entry,api/v1/entries', () => {
   it('should return Unauthorised user - Header Not Set', (done) => {
@@ -33,7 +34,7 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -67,7 +68,7 @@ describe('When the user try to create a new entry--- POST entry,api/v1/entries',
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -134,18 +135,31 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
-  it('should return all created entries  ', (done) => {
+  it('should return this page have no entry', (done) => {
     chai
       .request(app)
       .get('/api/v1/entries')
       .set('Authorization', token)
       .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.message).to.equal('this page have no entry');
+        done();
+      });
+  });
+  it('should return all display entry paging', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/entries?p=1')
+      .set('Authorization', token)
+      .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('display entry paging');
         done();
       });
   });
@@ -170,7 +184,7 @@ describe('When the user tries to view a specific entry--- GET entry,api/v1/entri
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -198,6 +212,19 @@ describe('When the user tries to view a specific entry--- GET entry,api/v1/entri
         done();
       });
   });
+  it('should return this entry does not belongs to you!', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/entries/1')
+      .set('Authorization', secondToken)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal(403);
+        expect(res.body.message).to.equal('this entry does not belongs to you!');
+        done();
+      });
+  });
   it('should return selected entry to the user ', (done) => {
     chai
       .request(app)
@@ -222,6 +249,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
       .patch('/api/v1/entries/1')
       .end((err, res) => {
         expect(res.status).to.equal(401);
+        expect(res.body.err).to.equal('Unauthorised - Header Not Set');
         done();
       });
   });
@@ -232,7 +260,21 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
+        expect(res.body.error).to.equal('Invalid token');
+        done();
+      });
+  });
+  it('should return this entry does not belongs to you!', (done) => {
+    chai
+      .request(app)
+      .patch('/api/v1/entries/1')
+      .set('Authorization', secondToken)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal(403);
+        expect(res.body.message).to.equal('this entry does not belongs to you!');
         done();
       });
   });
@@ -246,6 +288,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"id" must be a number');
         done();
       });
   });
@@ -260,6 +303,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"title" must be a string');
         done();
       });
   });
@@ -274,6 +318,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"description" must be a string');
         done();
       });
   });
@@ -291,6 +336,21 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         done();
       });
   });
+  it('should return You are not authorized to perform this action', (done) => {
+    chai
+      .request(app)
+      .patch('/api/v1/entries/1')
+      .set('Accept', 'application/json')
+      .set('Authorization', unthToken)
+      .send(entriesTest[5])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(401);
+        expect(res.body.status).to.equal(401);
+        expect(res.body.error).to.equal('You are not authorized to perform this action');
+        done();
+      });
+  });
   it('should return entry successfull updated ', (done) => {
     chai
       .request(app)
@@ -302,6 +362,7 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v1/e
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('entry successfully updated');
         done();
       });
   });
@@ -326,7 +387,20 @@ describe('delete entry, --api/v1/entries/id', () => {
       .set('Authorization', invalidToken)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+  it('should return this entry does not belongs to you!', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/entries/1')
+      .set('Authorization', secondToken)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal(403);
+        expect(res.body.message).to.equal('this entry does not belongs to you!');
         done();
       });
   });

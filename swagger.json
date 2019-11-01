@@ -1,0 +1,349 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "MyDiary is an online journal where users can pen down their thoughts and feelings.",
+    "version": "1.0",
+    "title": "MyDiary",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "fistonhn@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/fistonhn/MyDiary/README.md"
+    }
+  },
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": ["Signup"],
+        "summary": "User create account",
+        "description": "",
+        "operationId": "signup",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needed to make signup",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User successfully created"
+          },
+          "400": {
+            "description": "Bad request,Invalid input"
+          },
+          "409": {
+            "description": " User with used email exists"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": ["Signin"],
+        "summary": "User login",
+        "description": "",
+        "operationId": "signin",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to make login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/signin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully login"
+          },
+          "400": {
+            "description": "Bad request,Invalid input"
+          },
+          "403": {
+            "description": "Email or password is incorrect"
+          },
+          "401": {
+            "description": "User not exist"
+          }
+        }
+      }
+    },
+    "/entries": {
+      "post": {
+        "tags": ["Create entry"],
+        "summary": "User can add entry to his or her diary",
+        "description": "",
+        "operationId": "add entry",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "The value of user token"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add an entry in a diary",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/entries"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "entry successfully created"
+          },
+          "400": {
+            "description": "Bad request,Invalid input"
+          },
+          "403": {
+            "description": "You are not authorized to perform this action."
+          },
+          "401": {
+            "description": "The User associated with this token doesn't exist."
+          }
+        }
+      }
+    },
+
+    "/entries/{entrySlug}": {
+      "patch": {
+        "tags": ["Create entry"],
+        "summary": "User can add entry to his or her diary",
+        "description": "",
+        "operationId": "add entry",
+        "consumes": ["application/json", "application/xml"],
+        "produces": ["application/xml", "application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "The value of user token"
+          },
+          {
+            "name": "entrySlug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Add an entry in a diary",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/entries"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entry created successfully"
+          },
+          "400": {
+            "description": "Bad request,Invalid input"
+          },
+          "404": {
+            "description": "Entry was not found "
+          },
+          "403": {
+            "description": "You are not authorized to perform this action."
+          },
+          "401": {
+            "description": "The User associated with this token doesn't exist."
+          }
+        }
+      }
+    },
+    "/entries ": {
+      "get": {
+        "tags": ["View all entries"],
+        "summary": "Return all entries in diary",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "description": "The value of user token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all entries",
+            "schema": {
+              "type": "object",
+              "example": {
+                "id": 1,
+                "createOn": "2019/10/22 09:14:13",
+                "userid": 1,
+                "title": "to day in my history",
+                "description": "This is was the first morning that I have encouteredThis is was the first morning"
+              }
+            }
+          },
+          "404": {
+            "description": "Entries are not available"
+          },
+          "401": {
+            "description": "The User associated with this token doesn't exist."
+          },
+          "403": {
+            "description": "You are not authorized to perform this action."
+          }
+        }
+      }
+    },
+    "/entries/:id": {
+      "get": {
+        "tags": ["View specific entry"],
+        "summary": "Return specific entry in diary",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "description": "The value of user token"
+          },
+          {
+            "name": "entrySlug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An entry with given Id was found",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "An entry with given Id was found"
+          },
+          "401": {
+            "description": "The User associated with this token doesn't exist."
+          },
+          "403": {
+            "description": "You are not authorized to perform this action."
+          }
+        }
+      }
+    },
+    "/entries/:id ": {
+      "delete": {
+        "tags": ["Delete specific entry"],
+        "summary": "Return deleted entry in diary",
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string",
+            "description": "The value of user token"
+          },
+          {
+            "name": "entrySlug",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An entry with given Id was found",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "An entry with given Id was found"
+          },
+          "401": {
+            "description": "The User associated with this token doesn't exist."
+          },
+          "403": {
+            "description": "You are not authorized to perform this action."
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "signup": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "required": true
+        },
+        "lastName": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "string",
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "signin": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "entries": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "description": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}

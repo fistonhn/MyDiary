@@ -1,15 +1,14 @@
 const usersTest = [
 
-  // sign up user index 0 to 4
+  // sign up user index 0 to 5
   {
-    firstName: '',
     lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
   },
   {
     firstName: 'hbn',
-    lastName: 12345,
+    lastName: '',
     email: 'fiston@mail.com',
     password: '123456',
   },
@@ -26,22 +25,22 @@ const usersTest = [
     password: '12',
   },
   {
+    id: 1,
     firstName: 'hbn',
-    lastName: ' fiston',
+    lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
   },
   {
     firstName: 'hbn',
-    lastName: ' fiston',
+    lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
   },
 
-  // login user idex 6 to 10
+  // login user idex 6 to 12
 
   {
-    email: '',
     password: '123456',
   },
   {
@@ -59,6 +58,38 @@ const usersTest = [
   {
     email: 'fiston@gmail.com',
     password: '123456',
+  },
+  {
+    firstName: 'hbn',
+    lastName: 'fiston',
+    email: 'fiston@gmail.com',
+    password: '123456',
+  },
+  {
+    id: 150,
+    firstName: 'hbn',
+    lastName: 'fiston',
+    email: 'fiston@gmail.com',
+    password: '123456',
+  },
+  {
+    id: 5,
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
+  },
+  {
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
+  },
+  { id: 2,
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
   },
 
 ];

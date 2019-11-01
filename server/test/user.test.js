@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../app';
+import app from '../../app';
 import usersTest from '../models/usersData';
 
 const { expect } = chai;
@@ -33,6 +33,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"firstName" is required');
         done();
       });
   });
@@ -46,6 +47,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"lastName" is not allowed to be empty');
         done();
       });
   });
@@ -59,6 +61,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"email" must be a valid email');
         done();
       });
   });
@@ -72,6 +75,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"password" length must be at least 6 characters long');
         done();
       });
   });
@@ -80,11 +84,15 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
       .request(app)
       .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
-      .send(usersTest[4])
+      .send(usersTest[5])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(201);
         expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('User created successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fiston');
         done();
       });
   });
@@ -93,7 +101,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
       .request(app)
       .post('/api/v1/auth/signup')
       .set('Accept', 'application/json')
-      .send(usersTest[5])
+      .send(usersTest[11])
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(409);
@@ -116,6 +124,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"email" is required');
         done();
       });
   });
@@ -129,6 +138,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('"password" must be a string');
         done();
       });
   });
@@ -142,6 +152,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(404);
         expect(res.body.status).to.equal(404);
+        expect(res.body.error).to.equal('No associated account with this email. 😩');
         done();
       });
   });
@@ -155,6 +166,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.status).to.equal(401);
+        expect(res.body.error).to.equal('Incorrect password!');
         done();
       });
   });
@@ -168,6 +180,33 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('loggin successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fiston');
+        expect(res.body.data.userInfo.email).to.equal('fiston@gmail.com');
+        done();
+      });
+  });
+});
+
+// signup second user
+
+describe('When the user try to signup --api/v1/auth/signup', () => {
+  it('should return user created successfull', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(usersTest[14])
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('User created successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fils');
         done();
       });
   });
