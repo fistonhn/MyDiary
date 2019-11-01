@@ -15,8 +15,7 @@ dotenv.config();
 const token = generateToken(usersTest[4].id);
 const unthToken = generateToken(usersTest[12].id);
 const invalidToken = '';
-const secondToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MiwiaWF0IjoxNTcyNTg3MjQyLCJleHAiOjE1NzI1OTA4NDJ9.u0MRtrigyYDELGyM3Q2lQf78Vn6d0CYEK89jtD5H37U';
-
+const secondToken = generateToken(usersTest[15].id);
 // GET all entries but no entry created
 describe('When users tries to view all their diaries--- GET entry,api/v1/entries', () => {
   it('should return Unauthorised user - Header Not Set', (done) => {
