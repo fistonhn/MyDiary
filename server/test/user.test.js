@@ -189,3 +189,26 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
       });
   });
 });
+
+// signup second user
+
+describe('When the user try to signup --api/v1/auth/signup', () => {
+  it('should return user created successfull', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set('Accept', 'application/json')
+      .send(usersTest[14])
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.message).to.equal('User created successfull');
+        expect(res.body.data).to.have.property('token');
+        expect(res.body.data.userInfo.firstName).to.equal('hbn');
+        expect(res.body.data.userInfo.lastName).to.equal('fils');
+        done();
+      });
+  });
+});
