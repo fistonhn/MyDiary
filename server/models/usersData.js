@@ -85,6 +85,12 @@ const usersTest = [
     email: 'fils@gmail.com',
     password: '654789',
   },
+  { id: 2,
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
+  },
 
 ];
 
