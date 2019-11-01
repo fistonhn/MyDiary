@@ -38,7 +38,7 @@ const usersTest = [
     password: '123456',
   },
 
-  // login user idex 6 to 10
+  // login user idex 6 to 12
 
   {
     password: '123456',
@@ -64,6 +64,26 @@ const usersTest = [
     lastName: 'fiston',
     email: 'fiston@gmail.com',
     password: '123456',
+  },
+  {
+    id: 150,
+    firstName: 'hbn',
+    lastName: 'fiston',
+    email: 'fiston@gmail.com',
+    password: '123456',
+  },
+  {
+    id: 5,
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
+  },
+  {
+    firstName: 'hbn',
+    lastName: 'fils',
+    email: 'fils@gmail.com',
+    password: '654789',
   },
 
 ];

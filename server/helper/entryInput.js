@@ -9,4 +9,13 @@ const entryInput = (req) => {
   return Joi.validate(req.body, schema);
 };
 
-export default entryInput;
+const entryCreated = (req) => {
+  const schema = {
+    title: Joi.string().required().min(3).max(150),
+    description: Joi.string().required().min(5),
+  };
+
+  return Joi.validate(req.body, schema);
+};
+
+export { entryInput, entryCreated };
