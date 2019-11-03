@@ -114,7 +114,7 @@
             "description": "entry successfully created"
           },
           "400": {
-            "description": "Bad request,Invalid input"
+            "description": "Invalid token"
           },
           "403": {
             "description": "You are not authorized to perform this action."
