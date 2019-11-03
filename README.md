@@ -38,7 +38,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 # API documentation 
 
  The documenation of the API can be found at : 
- <a href="">  </a>
+ <a href="https://my-diary-fiston.herokuapp.com/api/swaggerDocument"> https://my-diary-fiston.herokuapp.com/api/swaggerDocument</a>
 
 # Installation
 - Run git clone https://github.com/fistonhn/MyDiary.git
