@@ -93,6 +93,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         expect(res.body.data).to.have.property('token');
         expect(res.body.data.userInfo.firstName).to.equal('hbn');
         expect(res.body.data.userInfo.lastName).to.equal('fiston');
+        expect(res.body.data.userData.email).to.equal('fistonhn@gmail.com');
         done();
       });
   });
@@ -149,10 +150,11 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
       .set('Accept', 'application/json')
       .send(usersTest[8])
       .end((err, res) => {
+        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(404);
         expect(res.body.status).to.equal(404);
-        expect(res.body.error).to.equal('No associated account with this email. 😩');
+        expect(res.body.error).to.equal('No associated account with this email');
         done();
       });
   });
@@ -177,6 +179,7 @@ describe(' When the user try to login --api/v1/auth/signin', () => {
       .set('Accept', 'application/json')
       .send(usersTest[10])
       .end((err, res) => {
+        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
