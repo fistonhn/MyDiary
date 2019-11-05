@@ -1,11 +1,10 @@
+import pg from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
+export const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 
-const config = {
+export const config = {
   port: process.env.PORT || 6000,
 };
-
-
-export default config;
