@@ -29,6 +29,10 @@ const query = {
     text: 'UPDATE entries SET title = $1, description = $2 WHERE email = $3 AND id = $4 RETURNING *',
     values: [title, description, email, id],
   }),
+  deleteDiary: (email, id) => ({
+    text: 'DELETE FROM entries e WHERE e.email = $1 AND e.id = $2',
+    values: [email, id],
+  }),
 
 };
 
