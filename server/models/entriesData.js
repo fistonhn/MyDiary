@@ -6,7 +6,7 @@ const entriesTest = [
   },
   {
     title: 'to day in my history',
-    description: 1234567890,
+    description: '',
   },
   {
     title: 'to day in my history',

@@ -7,7 +7,8 @@ import query from '../db/queries';
 
 const signup = async (req, res, next) => {
   try {
-    let { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email } = req.body;
+    let { password } = req.body;
 
     const usersFound = await pool.query(query.findUser(email));
 

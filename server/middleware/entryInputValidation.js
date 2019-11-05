@@ -1,4 +1,4 @@
-import { entryInput, entryCreated } from '../helper/entryInput';
+import { entryInput, entryCreated } from '../helper/entryInputValidator';
 
 const validateEntryInput = (req, res, next) => {
   const { error } = entryInput(req);

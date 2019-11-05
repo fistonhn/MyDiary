@@ -37,7 +37,7 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
         done();
       });
   });
-  it('should return lastName must be a string', (done) => {
+  it('should return lastName must be a provided', (done) => {
     chai
       .request(app)
       .post('/api/v2/auth/signup')
