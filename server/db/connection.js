@@ -1,18 +1,27 @@
-import pg from 'pg';
-import dotenv from 'dotenv';
+import { pool } from '../config/configulation';
 
-dotenv.config();
+const createTables = `
+DROP TABLE IF EXISTS users, entries;
+CREATE TABLE IF NOT EXISTS users(
+  id SERIAL PRIMARY KEY,
+  firstName VARCHAR (255) NOT NULL,
+  lastName VARCHAR (255) NOT NULL,
+  email VARCHAR (100) NOT NULL,
+  password VARCHAR (255) NOT NULL
+  );
+CREATE TABLE IF NOT EXISTS entries (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR (100) NOT NULL,
+  title VARCHAR NOT NULL,
+  description VARCHAR NOT NULL,
+  createdOn VARCHAR NOT NULL
+);
+ `;
+pool.query(createTables).then(() => {
+  pool.end();
+}).catch((err) => {
+  process.stdout.write(err.message);
+  process.exit(0);
+});
 
-const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
-
-const usersTable = `CREATE TABLE IF NOT EXISTS users
-(
-    id SERIAL PRIMARY KEY,
-    firstName VARCHAR (255) NOT NULL,
-    lastName VARCHAR (255) NOT NULL,
-    email VARCHAR (100) UNIQUE NOT NULL,
-    password VARCHAR (255) NOT NULL,
-);`;
-
-const setupDbTables = () => pool.query(`${usersTable}`);
-export { pool, setupDbTables };
+process.stdout.write('tables successfull created ');

@@ -1,7 +1,7 @@
 import lodash from 'lodash';
-import { generateToken } from '../helper/generateAuthToken';
+import generateToken from '../helper/generateAuthToken';
 import { encryptPassword, decryptPassword } from '../helper/hashedPassword';
-import { pool } from '../db/connection';
+import { pool } from '../config/configulation';
 import query from '../db/queries';
 
 
@@ -16,7 +16,7 @@ const signup = async (req, res, next) => {
     password = encryptPassword(password);
     const user = await pool.query(query.regUser(firstName, lastName, email, password));
 
-    const token = generateToken(user.rows[0].id);
+    const token = generateToken(user.rows[0].id, user.rows[0].email);
 
     const data = {
       token,
@@ -35,12 +35,12 @@ const login = async (req, res, next) => {
     const { email, password } = req.body;
     const usersFound = await pool.query(query.findUser(email));
 
-    if (usersFound.rows.length < 1) return res.status(404).send({ message: 'No associated account with this email' });
+    if (usersFound.rows.length < 1) return res.status(404).send({ status: 404, message: 'No associated account with this email' });
 
     const isPasswordValid = decryptPassword(password, usersFound.rows[0].password);
-    if (!isPasswordValid) return res.status(401).json({ status: 401, error: 'Incorrect password!' });
+    if (!isPasswordValid) return res.status(404).json({ status: 404, message: 'Incorrect password!' });
 
-    const token = generateToken(usersFound.rows[0].id);
+    const token = generateToken(usersFound.rows[0].id, usersFound.rows[0].email);
 
     const data = {
       token,

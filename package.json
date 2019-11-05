@@ -7,9 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "start": "babel-node app.js",
-    "test": "nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
-    "devStart": "nodemon --exec babel-node app.js ",
+    "start": "babel-node ./server/app.js",
+    "table": "babel-node ./server/db/connection.js setupDbTables",
+    "makeTables": "babel-node ./server/db/connection.js",
+    "test": "npm run makeTables && nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
+    "devStart": "npm run table && nodemon --exec babel-node ./server/app.js ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

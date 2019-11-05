@@ -18,3 +18,7 @@ script:
 after_success:
 
   - "npm run coveralls"
+
+before_script:
+
+  - psql -c 'create database travis_ci_test;' -U postgres

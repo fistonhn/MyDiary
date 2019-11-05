@@ -34,7 +34,7 @@ const usersTest = [
   {
     firstName: 'hbn',
     lastName: 'fiston',
-    email: 'fistonhn@gmail.com',
+    email: 'prosperfiston@gmail.com',
     password: '123456',
   },
 
@@ -48,15 +48,15 @@ const usersTest = [
     password: 123456,
   },
   {
-    email: 'hn@gmail.com',
+    email: 'hnfiston@gmail.com',
     password: '123456',
   },
   {
-    email: 'fiston@gmail.com',
-    password: 'fiston',
+    email: 'prosperfiston@gmail.com',
+    password: 'habimana',
   },
   {
-    email: 'fiston@gmail.com',
+    email: 'prosperfiston@gmail.com',
     password: '123456',
   },
   {
