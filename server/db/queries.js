@@ -25,6 +25,10 @@ const query = {
           WHERE u.email = $1 AND e.id = $2`,
     values: [email, id],
   }),
+  updateSpecific: (title, description, email, id) => ({
+    text: 'UPDATE entries SET title = $1, description = $2 WHERE email = $3 AND id = $4 RETURNING *',
+    values: [title, description, email, id],
+  }),
 
 };
 

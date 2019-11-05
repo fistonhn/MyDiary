@@ -26,6 +26,12 @@ const entriesTest = [
     title: 'to day in my history',
     description: 'This is was the first morning that I have encouteredThis is was the first morning that I have encoute This is was the first morning that I have encouteredThis is was the first morning that I have encoute This is was the first morning that I have encouteredThis is was the first morning that I have encoute',
   },
+  {
+    description: 'This is was the first morning that I have encouteredThis is was the first morning that I have encoute This is was the first morning that I have encouteredThis is was the first morning that I have encoute This is was the first morning that I have encouteredThis is was the first morning that I have encoute',
+  },
+  {
+    title: 'to day in my history',
+  },
 
 ];
 

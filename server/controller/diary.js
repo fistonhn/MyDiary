@@ -59,5 +59,30 @@ const getOneEntry = async (req, res) => {
   }
 };
 
+const updateEntry = async (req, res) => {
+  const { Email: email } = req.authUser;
+  const { id } = req.params;
+  const entry = await pool.query(query.getSpecific(email, id));
 
-export { createNewEntry, getAllEntries, getOneEntry };
+  if (entry.rowCount === 0) return res.status(404).json({ status: 404, message: 'entry not found' });
+
+  let { title } = req.body;
+  let { description } = req.body;
+
+  if (!title && !description) return res.status(400).json({ status: 400, message: 'please update either title or description!' });
+
+  if (!title) {
+    title = entry.rows[0].title;
+  }
+  if (!description) {
+    description = entry.rows[0].description;
+  }
+
+
+  const updateData = await pool.query(query.updateSpecific(title, description, email, id));
+
+  res.status(200).json({ message: 'entry successful updated', data: updateData.rows[0] });
+};
+
+
+export { createNewEntry, getAllEntries, getOneEntry, updateEntry };
