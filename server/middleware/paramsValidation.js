@@ -1,4 +1,4 @@
-import validateParamsId from '../helper/paramsInput';
+import validateParamsId from '../helper/paramsInputValidator';
 
 
 const validateParams = (req, res, next) => {

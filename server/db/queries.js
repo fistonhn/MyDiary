@@ -13,6 +13,18 @@ const query = {
     text: 'INSERT INTO entries (email,title,description,createdOn) VALUES ( $1, $2, $3, $4 ) RETURNING *',
     values: [email, title, description, createdOn],
   }),
+  getAll: (email) => ({
+    text: `SELECT e.* FROM entries e 
+          JOIN users u ON u.email = e.email 
+          WHERE u.email = $1 ORDER BY e.createdOn DESC`,
+    values: [email],
+  }),
+  getSpecific: (email, id) => ({
+    text: `SELECT e.* from entries e 
+          JOIN users u ON u.email = e.email
+          WHERE u.email = $1 AND e.id = $2`,
+    values: [email, id],
+  }),
 
 };
 
