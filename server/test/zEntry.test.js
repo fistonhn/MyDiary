@@ -322,79 +322,35 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v2/e
   });
 });
 
-// // DELETE entries
+// DELETE entries
 
-// describe('delete entry, --api/v1/entries/id', () => {
-//   it('should return Unauthorised user - Header Not Set', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/1')
-//       .end((err, res) => {
-//         expect(res.status).to.equal(401);
-//         done();
-//       });
-//   });
-//   it('should return invalid token or expired', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/1')
-//       .set('Authorization', invalidToken)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(400);
-//         done();
-//       });
-//   });
-//   it('should return this entry does not belongs to you!', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/1')
-//       .set('Authorization', secondToken)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(403);
-//         expect(res.body.status).to.equal(403);
-//         expect(res.body.message).to.equal('this entry does not belongs to you!');
-//         done();
-//       });
-//   });
-//   it('should return prams id must be a number', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/h')
-//       .set('Accept', 'application/json')
-//       .set('Authorization', token)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(400);
-//         expect(res.body.status).to.equal(400);
-//         done();
-//       });
-//   });
-//   it('should return There is no entry with that id', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/145')
-//       .set('Accept', 'application/json')
-//       .set('Authorization', token)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(404);
-//         expect(res.body.status).to.equal(404);
-//         done();
-//       });
-//   });
-//   it('should return  entry successfull deleted', (done) => {
-//     chai
-//       .request(app)
-//       .delete('/api/v1/entries/1')
-//       .set('Accept', 'application/json')
-//       .set('Authorization', token)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(200);
-//         expect(res.body.status).to.equal(200);
-//         done();
-//       });
-//   });
-// });
+describe('delete entry, --api/v2/entries/id', () => {
+  it('should return entry not found', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v2/entries/145')
+      .set('Accept', 'application/json')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.message).to.equal('entry not found');
+        done();
+      });
+  });
+  it('should return  entry successfull deleted', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v2/entries/1')
+      .set('Accept', 'application/json')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('​entry successfully deleted');
+        done();
+      });
+  });
+});

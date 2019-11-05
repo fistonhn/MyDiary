@@ -84,5 +84,17 @@ const updateEntry = async (req, res) => {
   res.status(200).json({ message: 'entry successful updated', data: updateData.rows[0] });
 };
 
+const deleteEntry = async (req, res) => {
+  const { Email: email } = req.authUser;
+  const { id } = req.params;
+  const entry = await pool.query(query.deleteDiary(email, id));
 
-export { createNewEntry, getAllEntries, getOneEntry, updateEntry };
+
+  if (entry.rowCount > 0) {
+    res.status(200).json({ status: 200, message: '​entry successfully deleted' });
+  } else {
+    res.status(404).json({ status: 404, message: 'entry not found' });
+  }
+};
+
+export { createNewEntry, getAllEntries, getOneEntry, updateEntry, deleteEntry };
