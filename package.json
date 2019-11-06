@@ -1,11 +1,8 @@
 {
-  "name": "server-side",
+  "name": "my-diary",
   "version": "1.0.0",
-  "description": "",
+  "description": "myDiary is an online journey where user can pen down their though and feeling",
   "main": "app.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
     "start": "npm run table && babel-node ./server/app.js",
     "table": "babel-node ./server/db/dbTables.js",
