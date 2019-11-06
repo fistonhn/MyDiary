@@ -15,11 +15,8 @@ dotenv.config();
 const token = generateToken(usersTest[5].id, usersTest[5].email);
 const unthToken = generateToken(usersTest[12].id, usersTest[12].email);
 const invalidToken = '';
-// const secondToken = generateToken(usersTest[15].id, usersTest[15].email);
 
-
-// GET all entries but no entry created
-describe('When users tries to view all their diaries--- GET entry,api/v1/entries', () => {
+describe('When users tries to view all their diaries--- GET entry,api/v2/entries', () => {
   it('should return Unauthorised user - Header Not Set', (done) => {
     chai
       .request(app)
@@ -55,7 +52,7 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
   });
 });
 
-// create an entry
+
 describe('When the user try to create a new entry--- POST entry,api/v2/entries', () => {
   it('should return title must be required ', (done) => {
     chai
@@ -104,9 +101,8 @@ describe('When the user try to create a new entry--- POST entry,api/v2/entries',
   });
 });
 
-// GET all created entries
 
-describe('When users tries to view all their diaries--- GET entry,api/v1/entries', () => {
+describe('When users tries to view all their diaries--- GET entry,api/v2/entries', () => {
   it('should return this page have no entry', (done) => {
     chai
       .request(app)
@@ -133,7 +129,6 @@ describe('When users tries to view all their diaries--- GET entry,api/v1/entries
   });
 });
 
-// GET one entry
 
 describe('When the user tries to view a specific entry--- GET entry,api/v2/entries/id', () => {
   it('should return params id must be a number ', (done) => {
@@ -175,8 +170,6 @@ describe('When the user tries to view a specific entry--- GET entry,api/v2/entri
   });
 });
 
-
-// UPDATE an entry
 
 describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v2/entries/id', () => {
   it('should return params id must be a number ', (done) => {
@@ -322,7 +315,6 @@ describe('When the user tries to UPDATE a specific diary--- PATCH entry,api/v2/e
   });
 });
 
-// DELETE entries
 
 describe('delete entry, --api/v2/entries/id', () => {
   it('should return entry not found', (done) => {

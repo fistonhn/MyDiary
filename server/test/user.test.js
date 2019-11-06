@@ -21,8 +21,8 @@ describe('when user send non existed routes ', () => {
   });
 });
 
-// sign up
-describe('When the user try to signup --api/v1/auth/signup', () => {
+
+describe('When the user try to signup --api/v2/auth/signup', () => {
   it('should return firstName is required ', (done) => {
     chai
       .request(app)
@@ -112,9 +112,8 @@ describe('When the user try to signup --api/v1/auth/signup', () => {
   });
 });
 
-// login user
 
-describe(' When the user try to login --api/v1/auth/signin', () => {
+describe(' When the user try to login --api/v2/auth/signin', () => {
   it('should return email is required!', (done) => {
     chai
       .request(app)
