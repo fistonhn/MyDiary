@@ -1,6 +1,4 @@
 const usersTest = [
-
-  // sign up user index 0 to 5
   {
     lastName: 'fiston',
     email: 'fiston@gmail.com',
@@ -38,7 +36,6 @@ const usersTest = [
     password: '123456',
   },
 
-  // login user idex 6 to 15
 
   {
     password: '123456',

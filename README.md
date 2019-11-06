@@ -7,6 +7,17 @@
 
 MyDiary is an online journal where users can pen down their thoughts and feelings.
 
+# Deployment
+
+- A user interface on gh-pages can be found at : 
+ <a href="https://fistonhn.github.io/MyDiary/"> https://fistonhn.github.io/MyDiary/</a>
+
+- A heroku app for API can be found at : 
+ <a href="https://my-diary-fiston.herokuapp.com/api/v2/auth/signup"> https://my-diary-fiston.herokuapp.com/api/v2/auth/signup</a>
+  
+- The documenation of the API can be found at : 
+ <a href="https://my-diary-fiston.herokuapp.com/api/swaggerDocument"> https://my-diary-fiston.herokuapp.com/api/swaggerDocument</a>
+
 # Features
 
 - A user can create an account if he doesn't have one
@@ -34,11 +45,6 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 - GET     /api/v1/entries                            - User can get all entries   
 - GET     /api/v1/entries/:id                        - User can get specific entry  
 - DELETE  /api/v1/entries/:id                        - User can delete an entry 
-
-# API documentation 
-
- The documenation of the API can be found at : 
- <a href="https://my-diary-fiston.herokuapp.com/api/swaggerDocument"> https://my-diary-fiston.herokuapp.com/api/swaggerDocument</a>
 
 # Installation
 - Run git clone https://github.com/fistonhn/MyDiary.git

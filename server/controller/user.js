@@ -5,53 +5,43 @@ import { pool } from '../config/configulation';
 import query from '../db/queries';
 
 
-const signup = async (req, res, next) => {
-  try {
-    const { firstName, lastName, email } = req.body;
-    let { password } = req.body;
+const signup = async (req, res) => {
+  const { firstName, lastName, email } = req.body;
+  let { password } = req.body;
 
-    const usersFound = await pool.query(query.findUser(email));
+  const usersFound = await pool.query(query.findUser(email));
 
-    if (usersFound.rowCount > 0) return res.status(409).json({ message: 'Email address already taken' });
+  if (usersFound.rowCount > 0) return res.status(409).json({ message: 'Email address already taken' });
 
-    password = encryptPassword(password);
-    const user = await pool.query(query.regUser(firstName, lastName, email, password));
+  password = encryptPassword(password);
+  const user = await pool.query(query.regUser(firstName, lastName, email, password));
 
-    const token = generateToken(user.rows[0].id, user.rows[0].email);
+  const token = generateToken(user.rows[0].id, user.rows[0].email);
 
-    const data = {
-      token,
-      userInfo: lodash.pick(user.rows[0], 'firstname', 'lastname', 'email'),
-    };
+  const data = {
+    token,
+    userInfo: lodash.pick(user.rows[0], 'firstname', 'lastname', 'email'),
+  };
 
-    res.status(201).json({ status: 201, message: 'User created successfull', data });
-  } catch (error) {
-    res.status(500).json({ message: error });
-    next(error);
-  }
+  res.status(201).json({ status: 201, message: 'User created successfull', data });
 };
 
-const login = async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    const usersFound = await pool.query(query.findUser(email));
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  const usersFound = await pool.query(query.findUser(email));
 
-    if (usersFound.rows.length < 1) return res.status(404).send({ status: 404, message: 'No associated account with this email' });
+  if (usersFound.rows.length < 1) return res.status(404).send({ status: 404, message: 'No associated account with this email' });
 
-    const isPasswordValid = decryptPassword(password, usersFound.rows[0].password);
-    if (!isPasswordValid) return res.status(404).json({ status: 404, message: 'Incorrect password!' });
+  const isPasswordValid = decryptPassword(password, usersFound.rows[0].password);
+  if (!isPasswordValid) return res.status(404).json({ status: 404, message: 'Incorrect password!' });
 
-    const token = generateToken(usersFound.rows[0].id, usersFound.rows[0].email);
+  const token = generateToken(usersFound.rows[0].id, usersFound.rows[0].email);
 
-    const data = {
-      token,
-      userInfo: lodash.pick(usersFound.rows[0], 'firstname', 'lastname', 'email'),
-    };
-    res.status(200).json({ status: 200, message: 'loggin successfull', data });
-  } catch (error) {
-    res.status(500).json({ message: error });
-    next(error);
-  }
+  const data = {
+    token,
+    userInfo: lodash.pick(usersFound.rows[0], 'firstname', 'lastname', 'email'),
+  };
+  res.status(200).json({ status: 200, message: 'loggin successfull', data });
 };
 
 export { signup, login };
