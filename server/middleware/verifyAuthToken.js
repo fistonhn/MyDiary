@@ -17,7 +17,7 @@ const verifyToken = async (req, res, next) => {
       return res.status(401).json({ error: 'Unauthorised Token or token not provided', err });
     }
     req.authUser = decodedToken;
-    const authEmail = decodedToken.Email;
+    const authEmail = decodedToken.email;
 
     const usersFound = await pool.query(query.findUser(authEmail));
 

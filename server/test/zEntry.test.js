@@ -39,17 +39,6 @@ describe('When users tries to view all their diaries--- GET entry,api/v2/entries
         done();
       });
   });
-  it('should return no created entry ', (done) => {
-    chai
-      .request(app)
-      .get('/api/v2/entries')
-      .set('Authorization', token)
-      .end((err, res) => {
-        expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal('the page you request does not exist');
-        done();
-      });
-  });
 });
 
 
@@ -103,19 +92,30 @@ describe('When the user try to create a new entry--- POST entry,api/v2/entries',
 
 
 describe('When users tries to view all their diaries--- GET entry,api/v2/entries', () => {
-  it('should return this page have no entry', (done) => {
+  it('should return display all entries', (done) => {
     chai
       .request(app)
       .get('/api/v2/entries')
       .set('Authorization', token)
       .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.message).to.equal('display all entries');
+        done();
+      });
+  });
+  it('should return the page you request does not exist', (done) => {
+    chai
+      .request(app)
+      .get('/api/v2/entries?p=15')
+      .set('Authorization', token)
+      .end((err, res) => {
         expect(res.status).to.equal(404);
-        expect(res.body.status).to.equal(404);
         expect(res.body.message).to.equal('the page you request does not exist');
         done();
       });
   });
-  it('should return all display entry paging', (done) => {
+  it('should return displayed entries by pagination', (done) => {
     chai
       .request(app)
       .get('/api/v2/entries?p=1')
@@ -123,7 +123,7 @@ describe('When users tries to view all their diaries--- GET entry,api/v2/entries
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal(200);
-        expect(res.body.message).to.equal('display entry paging');
+        expect(res.body.message).to.equal('display all entries');
         done();
       });
   });
