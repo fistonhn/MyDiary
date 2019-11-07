@@ -65,6 +65,7 @@ const updateEntry = async (req, res) => {
 
   if (entry.rowCount === 0) return res.status(404).json({ status: 404, message: 'entry not found' });
 
+
   let { title } = req.body;
   let { description } = req.body;
 

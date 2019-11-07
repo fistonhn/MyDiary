@@ -21,6 +21,7 @@ const verifyToken = async (req, res, next) => {
 
     const usersFound = await pool.query(query.findUser(authEmail));
 
+
     if (!usersFound.rows[0]) return res.status(401).send({ status: 401, error: 'You are not authorized to perform this action' });
 
     next();
