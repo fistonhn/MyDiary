@@ -3,7 +3,7 @@ import query from '../db/queries';
 
 const createNewEntry = async (req, res) => {
   const { title, description } = req.body;
-  const { Email: email } = req.authUser;
+  const { email } = req.authUser;
 
   const createdOn = new Date().toLocaleString();
 
@@ -14,8 +14,8 @@ const createNewEntry = async (req, res) => {
 };
 
 const getAllEntries = async (req, res) => {
-  const { Email: email } = req.authUser;
-  const userEntries = await pool.query(query.getAll(email));
+  const { email } = req.authUser;
+  const userEntries = await pool.query(query.getAllPaging(email));
 
   if (userEntries.rowCount < 0) return res.status(404).send({ status: 404, message: 'you have no entries!' });
 
@@ -29,11 +29,15 @@ const getAllEntries = async (req, res) => {
   let data = userEntries.rows.slice(firstEntry, lastEntry);
   const thisPage = data.length;
 
+  if (onPage <= 0) return res.status(404).send({ status: 404, message: 'the page you request does not exist!' });
+
+  if (!onPage) return res.status(200).send({ status: 200, message: 'display all entries', data: userEntries.rows });
+
   if (thisPage === 0) return res.status(404).send({ status: 404, message: 'the page you request does not exist' });
 
   return res.status(200).send({
     status: 200,
-    message: 'display entry paging',
+    message: 'display all entries',
     totalEntries,
     allPages,
     thisPage,
@@ -43,7 +47,7 @@ const getAllEntries = async (req, res) => {
 };
 
 const getOneEntry = async (req, res) => {
-  const { Email: email } = req.authUser;
+  const { email } = req.authUser;
   const { id } = req.params;
   const entry = await pool.query(query.getSpecific(email, id));
 
@@ -55,7 +59,7 @@ const getOneEntry = async (req, res) => {
 };
 
 const updateEntry = async (req, res) => {
-  const { Email: email } = req.authUser;
+  const { email } = req.authUser;
   const { id } = req.params;
   const entry = await pool.query(query.getSpecific(email, id));
 
@@ -80,7 +84,7 @@ const updateEntry = async (req, res) => {
 };
 
 const deleteEntry = async (req, res) => {
-  const { Email: email } = req.authUser;
+  const { email } = req.authUser;
   const { id } = req.params;
   const entry = await pool.query(query.deleteDiary(email, id));
 

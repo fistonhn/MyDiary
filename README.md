@@ -10,7 +10,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 # Deployment
 
 - A user interface on gh-pages can be found at : 
- <a href="https://fistonhn.github.io/MyDiary/"> https://fistonhn.github.io/MyDiary/</a>
+ <a href="https://fistonhn.github.io/MyDiary/UI"> https://fistonhn.github.io/MyDiary/UI</a>
 
 - A heroku app for API can be found at : 
  <a href="https://my-diary-fiston.herokuapp.com/api/v2/auth/signup"> https://my-diary-fiston.herokuapp.com/api/v2/auth/signup</a>
