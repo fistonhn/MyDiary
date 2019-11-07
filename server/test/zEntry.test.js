@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http';
 import app from '../app';
 import usersTest from '../models/usersData';
 import entriesTest from '../models/entriesData';
-import generateToken from '../helper/generateAuthToken';
+import { generateToken } from '../helper/generateAuthToken';
 
 
 const { expect } = chai;

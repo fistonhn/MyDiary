@@ -1,5 +1,5 @@
 import lodash from 'lodash';
-import generateToken from '../helper/generateAuthToken';
+import { generateToken } from '../helper/generateAuthToken';
 import { encryptPassword, decryptPassword } from '../helper/hashedPassword';
 import { pool } from '../config/configulation';
 import query from '../db/queries';
