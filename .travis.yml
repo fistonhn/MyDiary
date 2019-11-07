@@ -1,20 +1,32 @@
-  
-sudo: false
-
 language: node_js
 
 node_js:
 
   - "12.9.0"
 
-install:
+before_script:
 
-- npm install
+  - npm install
+
+services:
+
+- postgresql
+
+before_script:
+
+  - psql -c 'CREATE DATABASE mydiary;' -U postgres
 
 script:
 
   - "npm test"
 
-after_success:
+after_script:
 
   - "npm run coveralls"
+
+notifications:
+
+  email: false
+
+sudo: false
+  

@@ -13,7 +13,7 @@
       "url": "https://github.com/fistonhn/MyDiary/README.md"
     }
   },
-  "basePath": "/api/v1",
+  "basePath": "/api/v2",
   "schemes": ["http", "https"],
   "paths": {
     "/auth/signup": {
@@ -114,7 +114,7 @@
             "description": "entry successfully created"
           },
           "400": {
-            "description": "Bad request,Invalid input"
+            "description": "Invalid token"
           },
           "403": {
             "description": "You are not authorized to perform this action."

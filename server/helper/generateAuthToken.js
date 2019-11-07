@@ -3,16 +3,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const generateToken = (id) => {
-  const token = jwt.sign({ Id: id }, process.env.JWT_PRIVATE_KEY, { expiresIn: '1d' });
+const generateToken = (id, email) => {
+  const token = jwt.sign(
+    { id, email },
+    process.env.JWT_PRIVATE_KEY,
+    { expiresIn: '1d' },
+  );
 
   return token;
 };
 
-const verifyAuthToken = (token) => {
-  const myAuthToken = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
-
-  return myAuthToken.Id;
-};
-
-export { generateToken, verifyAuthToken };
+export default generateToken;

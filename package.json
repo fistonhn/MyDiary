@@ -1,15 +1,13 @@
 {
-  "name": "server-side",
+  "name": "my-diary",
   "version": "1.0.0",
-  "description": "",
+  "description": "myDiary is an online journey where user can pen down their though and feeling",
   "main": "app.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "start": "babel-node app.js",
-    "test": "nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
-    "devStart": "nodemon --exec babel-node app.js ",
+    "start": "npm run table && babel-node ./server/app.js",
+    "table": "babel-node ./server/db/dbTables.js",
+    "test": "npm run table && nyc --reporter=text --reporter=html mocha ./server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
+    "devStart": "npm run table && nodemon --exec babel-node ./server/app.js ",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -44,6 +42,7 @@
     "lodash": "^4.17.15",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
+    "pg": "^7.12.1",
     "swagger-ui-express": "^4.1.2"
   },
   "engines": {

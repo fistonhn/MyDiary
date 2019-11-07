@@ -1,21 +1,30 @@
-import { users } from '../controller/user';
-import { verifyAuthToken } from '../helper/generateAuthToken';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import { pool } from '../config/configulation';
+import query from '../db/queries';
 
-const verifyToken = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+dotenv.config();
+
+const verifyToken = async (req, res, next) => {
+  const authHeader = await req.headers.authorization;
 
   if (typeof authHeader === 'undefined') return res.status(401).json({ err: 'Unauthorised - Header Not Set' });
 
-  try {
-    const decoded = verifyAuthToken(authHeader);
+  const token = authHeader;
 
-    const authUserId = users.find((user) => user.id === decoded);
-    if (!authUserId) return res.status(401).send({ status: 401, error: 'You are not authorized to perform this action' });
+  jwt.verify(token, process.env.JWT_PRIVATE_KEY, async (err, decodedToken) => {
+    if (err) {
+      return res.status(401).json({ error: 'Unauthorised Token or token not provided', err });
+    }
+    req.authUser = decodedToken;
+    const authEmail = decodedToken.email;
+
+    const usersFound = await pool.query(query.findUser(authEmail));
+
+    if (!usersFound.rows[0]) return res.status(401).send({ status: 401, error: 'You are not authorized to perform this action' });
 
     next();
-  } catch (error) {
-    res.status(400).json({ status: res.statusCode, error: 'Invalid token' });
-  }
+  });
 };
 
 

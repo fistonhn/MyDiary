@@ -11,7 +11,6 @@ savebtn.addEventListener('click', (e) => {
   const newTitle = document.querySelector('.diary__title').value;
   const newContent = document.querySelector('.diary__content').value;
   if (newTitle.length === 0 || newContent.length === 0) {
-    //  popup message
 
     const popup = document.createElement('span');
     popup.className = 'popup-text';
@@ -30,7 +29,6 @@ savebtn.addEventListener('click', (e) => {
   }
 });
 
-/* Mobile Menu */
 
 mobileMenuBtn.addEventListener('click', () => {
   mobileMenuWrapper.classList.remove('hidden');

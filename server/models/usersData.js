@@ -1,6 +1,4 @@
 const usersTest = [
-
-  // sign up user index 0 to 5
   {
     lastName: 'fiston',
     email: 'fiston@gmail.com',
@@ -15,7 +13,7 @@ const usersTest = [
   {
     firstName: 'hbn',
     lastName: 'fiston',
-    email: 'fistongmail.com',
+    email: 'fiston',
     password: '123456',
   },
   {
@@ -34,11 +32,10 @@ const usersTest = [
   {
     firstName: 'hbn',
     lastName: 'fiston',
-    email: 'fiston@gmail.com',
+    email: 'prosperfiston@gmail.com',
     password: '123456',
   },
 
-  // login user idex 6 to 12
 
   {
     password: '123456',
@@ -48,21 +45,21 @@ const usersTest = [
     password: 123456,
   },
   {
-    email: 'hn@gmail.com',
+    email: 'hnfiston@gmail.com',
     password: '123456',
   },
   {
-    email: 'fiston@gmail.com',
-    password: 'fiston',
+    email: 'prosperfiston@gmail.com',
+    password: 'habimana',
   },
   {
-    email: 'fiston@gmail.com',
+    email: 'prosperfiston@gmail.com',
     password: '123456',
   },
   {
     firstName: 'hbn',
     lastName: 'fiston',
-    email: 'fiston@gmail.com',
+    email: 'fistonhn@gmail.com',
     password: '123456',
   },
   {

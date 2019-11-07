@@ -1,4 +1,4 @@
-import { signupInput, signinInput } from '../helper/userInput';
+import { signupInput, signinInput } from '../helper/userInputValidator';
 
 
 const validateSignup = (req, res, next) => {
